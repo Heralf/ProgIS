@@ -1,0 +1,670 @@
+
+body {
+    font-family: Verdana;
+    width: 98%;
+	height: 99%;
+    background:  #FFFEFE;
+	transition: all 0.4s ease 0s;
+	background: #F5F5F5;
+}
+
+#ColonnaSx {
+	position: fixed;
+    text-align: left;
+    line-height: 2;
+	height: 101vh;  			
+	margin-left: -8px; 					/* questi margin negativi servono per allineare */
+	margin-top: -10px;  				/* la nav-bar ai bordi del browser */
+    width: 305px;
+	float:left;
+	border-width: 0px;
+	border-radius: 1px;
+	background: white;	
+	box-shadow: 0px  0px 12px #C0C0C0;
+}
+
+#logo{
+	margin-top: 0px;
+	padding-bottom: 10px;
+	margin-left: -20px;
+	padding-left: 30px;
+	padding-right: 4px;
+	padding-bottom: 10px;
+	width: 95.5%;
+	transition: all 0.4s ease 0s;
+	vertical-align: middle;
+	overflow: auto;
+	border-radius: 2px;
+}
+
+#logo:hover{
+	background: #D3D3D3;
+}
+
+#logoPortrait{
+	margin-left: -25%;
+	padding-left: 50%;
+	padding-right: 50%;
+	margin-top: -30px;
+	padding-bottom: 0px;
+	transition: all 0.4s ease 0s;
+	overflow: hidden;
+	border-radius: 2px;
+}
+
+#logoPortrait:hover{
+	background: #D3D3D3;
+
+}
+
+#benvenuto{
+	font-weight: light;
+	float:left;
+	clear:both;
+	font-size: large;
+	color:  black;
+	margin-left: 22px;
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+
+#tastoAccediLaterale{
+	height: 45px;
+	width: 140px;
+	padding-left: 4px;
+	padding-top: 3px;
+	margin-left: 24%;
+	margin-top: 25px;
+	margin-bottom: -20px;
+	box-shadow: 1px  1px 3px #FF6633;
+	transition: all 0.4s ease 0s;
+	background: white;
+	border: 0px;
+	font-weight: light;
+	font-size: large;
+	color:  black;
+	border-radius: 2px;
+}
+
+#tastoAccediLaterale:hover{
+	background: white;
+	box-shadow: 1px  1px 7px #FF6633;
+}
+
+
+#tastoAccediPortrait{
+	display: none;
+}
+
+#LeftText{
+	margin-bottom: 5px;
+	margin-top: 12px;
+	padding-top:3px;
+	height: 40px;
+	list-style-type: none;
+	transition: all .4s ease;
+	padding-left: 50px;
+	margin-left: -75px;
+	
+	
+}
+
+#LeftText:hover{
+	background: white;
+	box-shadow: 0px  0px 7px  #FF6633;
+	border-radius: 2px;
+}
+
+#rigaCentrale {
+	display: none;
+	transition: all 0.4s ease 0s;
+   }
+   
+#corpo{
+	width: 68%;
+	height: auto;
+	font-size:88%;
+	float:left;
+	margin-left: 300px;
+	margin-bottom: -10px;
+	transition: all 0.4s ease 0s;
+}   
+
+#titolo{
+	height:85px;
+	width: 92%;
+	overflow: hidden;
+	float: left;
+	clear: right;
+	padding-top: 25px;
+	margin-left: 30px;
+	font-size: xx-large;
+	transition: all 0.4s ease 0s;
+}
+
+#contenuto{
+	height: auto;
+	overflow: auto;
+	margin-bottom: 25px;
+	width: 90%;
+	float: left;
+	clear: right;
+	margin-left: 30px;
+	padding-left: 25px;
+	padding-right: 25px;
+	padding-bottom: 25px;
+	margin-top: 10px;
+	background: white;
+	transition: all 0.4s ease 0s;
+	border-radius: 6px; 
+	box-shadow: 0px  0px 12px #C0C0C0;
+}
+
+#contenuto:hover{
+	 
+}
+
+#sezioniInfo{
+	font-weight:bold;
+	font-size: 145%;
+	color: #EF4836;
+	margin-top: 22px;
+	margin-bottom: 22px;
+}
+
+#domanda{
+	font-weight:bold;
+	font-size: 105%;
+	margin-bottom: 8px;
+	margin-top: 19px;
+}
+
+#boxDomanda{
+	width:  335px;
+	height: auto;
+	float: left;
+	background: #F0F0F0;
+	border-radius: 2px;
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-right: 7px;
+	margin-bottom: 13px;
+	padding-top: 20px;
+	padding-left: 17px;
+	padding-right: 17px;
+	padding-bottom: 20px;
+	transition: all 0.4s ease 0s;
+}
+
+#testoRichiesteErasmus{
+	line-height:1.2;
+	margin-left: 18px;
+	margin-top: 20px;
+	margin-bottom: 12px;
+	margin-right: 18px;
+	font-size: 106%;
+	transition: all 0.4s ease 0s;
+}
+
+#tastoDomandeErasmus1{  /* TASTO MODIFICA */
+	height: 42px;
+	width: 135px;
+	padding-left: 4px;
+	padding-top: 3px;
+	margin-left: 10px;
+	margin-top: 32px;
+	float:right;
+	box-shadow: 1px  1px 3px #FF7F50;
+	transition: all 0.4s ease 0s;
+	background: white;
+	border: 0px;
+	font-weight: light;
+	font-size: large;
+	color:  black;
+	border-radius: 2px;
+}
+
+#tastoDomandeErasmus1:hover{  /* TASTO MODIFICA */
+	box-shadow: 1px  1px 8px #FF7F50;
+}
+
+#tastoDomandeErasmus2{  /* TASTO INVIA */
+	height: 42px;
+	width: 135px;
+	padding-left: 4px;
+	padding-top: 3px;
+	margin-top: 22px;
+	margin-left: 10px;
+	float: right;
+	box-shadow: 1px  1px 3px #2ecc71;
+	transition: all 0.4s ease 0s;
+	background: white;
+	border: 0px;
+	font-weight: light;
+	font-size: large;
+	color:  black;
+	border-radius: 2px;
+}
+
+#tastoDomandeErasmus2:hover{  /* TASTO INVIA */
+	box-shadow: 1px  1px 8px #2ecc71;
+}
+
+#tastoDomandeErasmus3{  /* TASTO CANCELLA */
+	height: 42px;
+	width: 135px;
+	padding-left: 4px;
+	padding-top: 3px;
+	margin-left: 25px;
+	margin-top: 32px;
+	float:right;
+	box-shadow: 1px  1px 3px red;
+	transition: all 0.4s ease 0s;
+	background: white;
+	border: 0px;
+	font-weight: light;
+	font-size: large;
+	color:  black;
+	border-radius: 2px;
+}
+
+#tastoDomandeErasmus3:hover{  /* TASTO CANCELLA */
+	box-shadow: 1px  1px 7px red;
+}
+
+#iconaTriste{
+	display:block;
+	font-size: 100px;
+	color: #9b59b6;  
+	margin-left:46%; 
+	margin-top: 15px;
+	margin-bottom:22px;
+	margin-right:auto; 
+	transition: all 0.4s ease 0s;
+}
+
+#testoTriste{
+	line-height:1;
+	margin-left:25%;
+	margin-right:22%;
+	font-size: 108%;
+	transition: all 0.4s ease 0s;
+}
+
+#linkTriste{
+	line-height: 1.1;
+	margin-bottom: 5px;
+}
+
+#testoLogin{
+	line-height:1;
+	font-size: 105%;
+	margin-top: 40px;
+	margin-left: 35px;
+	margin-right: 35px;	
+	transition: all 0.4s ease 0s;
+}
+
+#inserisciTesto{
+	height: 35px;
+	width: 335px;
+	margin-bottom: 18px;
+	margin-top: 8px;
+	padding-left: 10px;
+	background: #F8F8F8;
+	border-radius: 2px;
+	border-width: 0px;
+	transition: all 0.4s ease 0s;
+	
+}
+
+#inserisciTesto:hover{
+	box-shadow: 0px  0px 7px  #FF6633;
+}
+
+#inserisciTesto:focus{
+	box-shadow: 0px  0px 7px  #FF6633;
+}
+
+
+#tastoLogin{
+	height: 45px;
+	width: 140px;
+	padding-left: 4px;
+	padding-top: 3px;
+	margin-left: 205px;
+	margin-top: 10px;
+	box-shadow: 1px  1px 3px #FF6633;
+	transition: all 0.4s ease 0s;
+	background: white;
+	border: 0px;
+	font-weight: light;
+	font-size: large;
+	color:  black;
+	border-radius: 3px;
+}
+
+#tastoLogin:hover{
+	box-shadow: 1px  1px 7px  #FF6633;
+}
+
+#inputEtichetta{
+	font-weight: bold;
+	transition: all 0.4s ease 0s;
+	margin-left:12px;
+}
+
+#testoCompilaDomanda{
+	line-height: 1.4;
+	font-size: 107%;
+	margin-top: 32px;
+	margin-left: 35px;
+	margin-right: 35px;	
+	transition: all 0.4s ease 0s;
+}
+
+#tastoCompilaDomanda1{
+	height: 42px;
+	width: 137px;
+	padding-left: 4px;
+	padding-top: 3px;
+	margin-left: 205px;
+	margin-top: 10px;
+	float:left;
+	clear:both;
+	box-shadow: 1px  1px 3px #FF6633;
+	transition: all 0.4s ease 0s;
+	background: white;
+	border: 0px;
+	font-weight: light;
+	font-size: large;
+	color:  black;
+	border-radius: 2px;
+}
+
+#tastoCompilaDomanda1:hover{
+	box-shadow: 1px  1px 7px #FF6633;
+}
+
+#tastoCompilaDomanda2{
+	height: 42px;
+	width: 137px;
+	padding-left: 4px;
+	padding-top: 3px;
+	margin-left: 205px;
+	margin-top: 10px;
+	float:left;
+	clear:both;
+	box-shadow: 1px  1px 3px #2ecc71;
+	transition: all 0.4s ease 0s;
+	background: white;
+	border: 0px;
+	font-weight: light;
+	font-size: large;
+	color:  black;
+	border-radius: 2px;
+}
+
+#tastoCompilaDomanda2:hover{
+	box-shadow: 1px  1px 7px #2ecc71;
+}
+
+#tastoModuli1{  /* TASTO COMPILA */
+	height: 42px;
+	width: 135px;
+	padding-left: 4px;
+	padding-top: 3px;
+	margin-left: 10px;
+	margin-top: 22px;
+	float: right;
+	clear: both;
+	box-shadow: 1px  1px 3px #FF6633;
+	transition: all 0.4s ease 0s;
+	background: white;
+	border: 0px;
+	font-weight: light;
+	font-size: large;
+	color:  black;
+	border-radius: 2px;
+}
+
+#tastoModuli1:hover{  /* TASTO COMPILA*/
+	box-shadow: 1px  1px 7px #FF6633;
+}
+
+#tastoModuli2{  /* TASTO INVIA */
+	height: 42px;
+	width: 135px;
+	padding-left: 4px;
+	padding-top: 3px;
+	margin-top: 15px;
+	margin-left: 10px;
+	float: right;
+	clear: both;
+	box-shadow: 1px  1px 3px #2ecc71;
+	transition: all 0.4s ease 0s;
+	background: white;
+	border: 0px;
+	font-weight: light;
+	font-size: large;
+	color:  black;
+	border-radius: 2px;
+}
+
+#tastoModuli2:hover{  /* TASTO INVIA */
+	box-shadow: 1px 1px 8px #2ecc71;
+}
+
+
+a:link, a:visited { 
+	text-decoration: none;
+	transition: all 0.4s ease 0s;
+}
+
+a{
+	font-weight: light;
+	font-size: large;
+	color:  black;
+}
+
+a:hover { 
+	color: #0066FF; 
+}
+
+@media screen and (max-width: 1000px){ /* Tablet + grande */
+
+
+#rigaCentrale{
+	display: inline;
+	height: auto;
+    width: 102%;
+    list-style-type: none;
+	float: left;
+	padding-bottom: 6px;
+	margin-right:-14px;
+	margin-left: -8px;
+	margin-top: -8.5px;
+	margin-bottom: 5px;
+	border-width: 0px;
+	border-radius: 1px;
+	background: white;
+	overflow: hidden;
+	box-shadow: 0px  0px 12px #C0C0C0;
+}
+
+#tastoAccediLaterale{
+	display: none;	
+}
+
+#tastoAccediPortrait{
+	box-shadow: 1px  1px 3px #FF6633;
+	transition: all 0.4s ease 0s;
+	height: 50px;
+	width: 155px;
+	padding-left: 3px;
+	display: inline;
+	margin-left: 37%;
+	float: left;
+	clear: both;
+	margin-top: 12px;
+	margin-bottom: 5px;
+	background: white;
+	border: 0px;
+	font-weight: light;
+	font-size: large;
+	color:  black;
+	padding-top: 3px;
+	border-radius: 2px;
+}
+
+#tastoAccediPortrait:hover{
+	background: white;
+	box-shadow: 1px  1px 7px #FF6633;
+}
+
+#ColonnaSx {
+	display: none;
+   }
+
+#OrizText{
+	float: left;
+	clear: both;
+	margin-top: 6px;
+	margin-left: 18px;
+	margin-bottom: 0px;
+	margin-right: 18px;
+	width: 100%;
+	height: 35px;
+	transition: all 0.4s ease 0s;
+	padding-left: 75px;
+	margin-left: -50px;
+	padding-top: 6px; 
+	overflow: hidden;		
+}
+
+#OrizText:hover{
+	box-shadow: 0px  0px 7px  #FF6633;
+}
+
+#benvenuto{
+	margin-left: 30px;
+}
+
+#corpo{
+	width: 92%;
+	margin-left: 4%;
+	margin-top:5px;
+}
+
+#titolo{
+	margin-left: 0px;
+	margin-top: -10px;
+}
+
+#contenuto{
+	margin-left: 0px;
+	width: 90%;
+	margin-top: 18px;
+}
+
+#boxDomanda{
+	margin-left: 20px;
+	margin-right: 15px;
+}
+
+}
+
+
+@media screen and (max-width: 745px){ /* Tablet */
+#logoPortrait{
+	padding-left: 48%;
+	
+}
+
+#boxDomanda{
+	margin-left: 20px;
+	margin-right: 15px;
+}
+
+#iconaTriste{
+	margin-left: 40%; 
+	
+}
+
+#testoTriste{
+	line-height:1;
+	margin-left:7%;
+	margin-right:7%;
+	font-size: 108%;
+}
+
+
+
+}
+
+@media screen and (max-width: 550px){ /* Smartphone */
+
+#logoPortrait{
+	padding-left: 38%;
+	
+}
+
+#contenuto{
+	margin-left: 5px;
+	margin-right: 5px;
+	padding-left: 12px;
+	padding-right: 12px;
+	padding-bottom: 25px;
+	margin-top: 18px;
+
+}
+
+#iconaTriste{
+	margin-left: 35%; 
+	
+}
+
+#testoTriste{
+	line-height:1;
+	margin-left:6%;
+	margin-right:6%;
+	font-size: 108%;
+}
+
+#testoCompilaDomanda{
+	
+	margin-left: 15px;
+	margin-right: 15px;	
+	
+}
+
+#inputEtichetta{
+	font-weight: bold;
+	transition: all 0.4s ease 0s;
+	margin-left:10px;
+}
+
+#inserisciTesto{
+	height: 35px;
+	width: 270px;
+	
+}
+
+#tastoCompilaDomanda1{
+	
+	margin-left: 140px;
+}
+
+#tastoCompilaDomanda2{
+	
+	margin-left: 140px;
+}
+
+#boxDomanda{
+	width: 317px;
+	margin-left: 20px;
+	margin-right: 15px;
+}
+
+
+}

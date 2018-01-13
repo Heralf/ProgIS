@@ -1,0 +1,10 @@
+<Context>
+	<WatchedResource>WEB-INF/web.xml</WatchedResource>
+    <Resource name="jdbc/Erasmus"
+        auth="Container"
+        driverClassName="com.mysql.jdbc.Driver"
+        type="javax.sql.DataSource"
+        username="root"
+        password="admin"
+        url="jdbc:mysql://localhost:3306/erasmus"/>
+</Context>
