@@ -77,5 +77,38 @@ public class Account{
 		return account;
 	}
 	
+	public synchronized AccountBean doSearchByID(int ID) throws SQLException{
+		PreparedStatement preparedStatement = null;
+		AccountBean account = new AccountBean();
+		String selectSQL = "SELECT * FROM " + Account.TABLE_NAME + " WHERE ID = ? ";
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setInt(1, ID);
+			ResultSet rs = preparedStatement.executeQuery();
+			if(rs.next()){
+				account.setID(rs.getInt("ID"));
+				account.setNome(rs.getString("Nome"));
+				account.setCognome(rs.getString("Cognome"));
+				account.setSesso(rs.getString("Sesso"));
+				account.setData(rs.getString("Data"));
+				account.setMatricola(rs.getString("Matricola"));
+				account.setPostaElettronica(rs.getString("PostaElettronica"));
+				account.setPassword(rs.getString("Password"));
+				account.setCittaNascita(rs.getString("CittaNascita"));
+				account.setCittaResidenza(rs.getString("CittaResidenza"));
+				account.setIndirizzo(rs.getString("Indirizzo"));
+				account.setNumeroCivico(rs.getInt("NumeroCivico"));
+				account.setCAP(rs.getInt("CAP"));
+				account.setNumeroTelefonico(rs.getString("NumeroTelefonico"));
+				account.setAdmin(rs.getBoolean("Admin"));
+			}
+		} finally {
+				if (preparedStatement != null)
+					preparedStatement.close();
+		}
+		return account;
+	}
+	
 	Connection connection = null;
 }

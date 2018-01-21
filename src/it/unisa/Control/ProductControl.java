@@ -30,8 +30,7 @@ public class ProductControl extends HttpServlet {
 
 		
 		String action = request.getParameter("action");
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/homeStudenti.jsp");
-		//String i = request.getParameter("Number");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/homeStudenti.jsp");;
 		try {
 			if (action != null) {
 				if (action.equalsIgnoreCase("redirect")) {
@@ -40,18 +39,29 @@ public class ProductControl extends HttpServlet {
 					String n = request.getParameter("email");
 					modelAcc.openConnection();
 					AccountBean account = modelAcc.doSearchByEmail(n);
-					n = request.getParameter("password");
-					if(n.equals(account.getPassword())){
-						modelMod.openConnection();
-						modelMes.openConnection();
-						modelGra.openConnection();
-						request.getSession().setAttribute("nome", account.getNome()+" "+account.getCognome());
-						request.getSession().setAttribute("admin", account.getAdmin());
-						request.getSession().setAttribute("email", account.getPostaElettronica());
-						request.getSession().setAttribute("id", account.getID());
-						dispatcher = getServletContext().getRequestDispatcher("/homeStudenti.jsp");
+					if(account.getPostaElettronica().equals(n))
+					{
+						n = request.getParameter("password");
+						if(n.equals(account.getPassword())){
+							modelMod.openConnection();
+							modelMes.openConnection();
+							modelGra.openConnection();
+							request.getSession().setAttribute("nome", account.getNome()+" "+account.getCognome());
+							request.getSession().setAttribute("admin", account.getAdmin());
+							request.getSession().setAttribute("email", account.getPostaElettronica());
+							request.getSession().setAttribute("id", account.getID());
+							if(account.getAdmin())
+								dispatcher = getServletContext().getRequestDispatcher("/homeImpiegati.jsp");
+							else
+								dispatcher = getServletContext().getRequestDispatcher("/homeStudenti.jsp");
+						}else{
+							modelAcc.closeConnection();
+							request.setAttribute("errore",false);
+							dispatcher = getServletContext().getRequestDispatcher("/login.jsp");
+						}
 					}else{
 						modelAcc.closeConnection();
+						request.setAttribute("errore",true);
 						dispatcher = getServletContext().getRequestDispatcher("/login.jsp");
 					}
 				}else if (action.equalsIgnoreCase("logout")){
@@ -71,64 +81,119 @@ public class ProductControl extends HttpServlet {
 /*ModulComand*/ }else if (action.equalsIgnoreCase("creaModulo")){
 					ModuloBean modulo = new ModuloBean();
 					String email = (String)(request.getSession().getAttribute("email"));
-					Boolean domanda = Boolean.parseBoolean(request.getParameter("domanda"));
 					GregorianCalendar gc = new GregorianCalendar();
 					modulo.setData(gc.get(Calendar.DAY_OF_MONTH)+"/"+gc.get(Calendar.MONTH)+"/"+gc.get(Calendar.YEAR));
-					if(domanda){
-						modulo.setDestinazione1(request.getParameter("Destinazione1"));
-						modulo.setDestinazione2(request.getParameter("Destinazione2"));
-						modulo.setDestinazione3(request.getParameter("Destinazione3"));
-					}else{
-						modulo.setCartaIdentita(request.getParameter("CartaIdentita"));
-					}
+					modulo.setDestinazione1(request.getParameter("destinazione1"));
+					modulo.setDestinazione2(request.getParameter("destinazione2"));
+					modulo.setDestinazione3(request.getParameter("destinazione3"));
 					modulo.setAccount(modelAcc.doSearchByEmail(email));
-					modelMod.creaModulo(modulo, domanda);
-					//redirect alla lista dei moduli
+					modelMod.creaModulo(modulo, true, false);
+					dispatcher = caricaModuliDomandaUtente(request,response,dispatcher);
+				}else if(action.equalsIgnoreCase("compilaDomandaErasmus")){
+					int ID = (int)request.getSession().getAttribute("id");
+					request.setAttribute("account",modelAcc.doSearchByID(ID));
+					dispatcher = getServletContext().getRequestDispatcher("/compilaDomandaErasmus.jsp");
 				}else if (action.equalsIgnoreCase("caricaModulo")){
 					int idModulo = Integer.parseInt(request.getParameter("idModulo"));
 					ModuloBean modulo = modelMod.caricaModulo(idModulo);
+					String link = request.getParameter("page");
+					request.setAttribute("account",modelAcc.doSearchByID((int)request.getSession().getAttribute("id")));
 					request.setAttribute("modulo", modulo);
-					//redirect alla pagina per visualizzre il modulo
+					request.setAttribute("inviato", inviato(request));
+					dispatcher = getServletContext().getRequestDispatcher(link);
 				}else if(action.equalsIgnoreCase("caricaListaModuliUtente")){
-					Boolean domanda = Boolean.parseBoolean(request.getParameter("domanda"));
-					Collection <ModuloBean> moduli = modelMod.caricaModuli((int)request.getSession().getAttribute("id"), domanda);
-					request.setAttribute("moduli",moduli);
-					if(domanda)
-						dispatcher = getServletContext().getRequestDispatcher("/tueRichiesteErasmus.jsp");
-					else
-						dispatcher = getServletContext().getRequestDispatcher("/tuoiModuli.jsp");
-				}else if(action.equalsIgnoreCase("aggiornaModulo")){
-					Boolean domanda = Boolean.parseBoolean(request.getParameter("domanda"));
+					dispatcher = caricaModuliDomandaUtente(request,response,dispatcher);
+				}else if(action.equals("aggiornaModulo")){
 					int idModulo = Integer.parseInt(request.getParameter("idModulo"));
 					ModuloBean modulo = new ModuloBean();
-					if(domanda){
-						modulo.setDestinazione1(request.getParameter("Destinazione1"));
-						modulo.setDestinazione2(request.getParameter("Destinazione2"));
-						modulo.setDestinazione3(request.getParameter("Destinazione3"));
-						modulo.getAccount().setNumeroTelefonico(request.getParameter("NumeroTelefonico"));
-					}else
-						modulo.setCartaIdentita(request.getParameter("CartaIdentita"));
-					modelMod.aggiornaModulo(idModulo, modulo, domanda);
-					//redirect alla pagina per visualizzare i moduli
-				}else if(action.equalsIgnoreCase("inviaModulo")){
+					modulo.setDestinazione1(request.getParameter("destinazione1"));
+					modulo.setDestinazione2(request.getParameter("destinazione2"));
+					modulo.setDestinazione3(request.getParameter("destinazione3"));
+					modelMod.aggiornaModulo(idModulo, modulo, true, false);
+					dispatcher = caricaModuliDomandaUtente(request,response,dispatcher);
+				}else if(action.equals("AggiornaModulo")){
+					int idModulo = Integer.parseInt(request.getParameter("idModulo"));
+					ModuloBean modulo = new ModuloBean();
+					modulo.setDestinazione1(request.getParameter("destinazione1"));
+					modulo.setDestinazione2(request.getParameter("destinazione2"));
+					modulo.setDestinazione3(request.getParameter("destinazione3"));
+					modelMod.aggiornaModulo(idModulo, modulo, true, true);
+					dispatcher = caricaModuliDomandaUtente(request,response,dispatcher);
+				}else if(action.equals("inviaModulo")){
+					ModuloBean modulo = new ModuloBean();
+					String email = (String)(request.getSession().getAttribute("email"));
+					GregorianCalendar gc = new GregorianCalendar();
+					modulo.setData(gc.get(Calendar.DAY_OF_MONTH)+"/"+gc.get(Calendar.MONTH)+1+"/"+gc.get(Calendar.YEAR));
+					modulo.setDestinazione1(request.getParameter("destinazione1"));
+					modulo.setDestinazione2(request.getParameter("destinazione2"));
+					modulo.setDestinazione3(request.getParameter("destinazione3"));
+					modulo.setAccount(modelAcc.doSearchByEmail(email));
+					modelMod.creaModulo(modulo, true, true);
+					dispatcher = caricaModuliDomandaUtente(request,response,dispatcher);
+				}else if(action.equals("InviaModulo")){
 					int idModulo = Integer.parseInt(request.getParameter("idModulo"));
 					modelMod.inviaModulo(idModulo);
-					//redirect alla pagian dei moduli
+					dispatcher = caricaModuliDomandaUtente(request,response,dispatcher);
+				}else if(action.equalsIgnoreCase("cancellaModulo")){
+					int idModulo = Integer.parseInt(request.getParameter("idModulo"));
+					modelMod.eliminaModulo(idModulo);
+					dispatcher = caricaModuliDomandaUtente(request,response,dispatcher);
+				}else if(action.equalsIgnoreCase("caricaListaAccettazioneUtente")){
+					dispatcher = caricaModuliAccettazioneUtente(request,response,dispatcher);
+				}else if(action.equalsIgnoreCase("caricaListaModuliAdmin")){
+					dispatcher = caricaModuliDomandaAdmin(request,response,dispatcher);
 				}else if(action.equalsIgnoreCase("confermaModulo")){
 					int idModulo = Integer.parseInt(request.getParameter("idModulo"));
 					modelMod.confermaModulo(idModulo);
-					//invio messaggio all'utente che indichi che e stato accettato il modulo
-					//redirect alla pagina dei moduli
+					ModuloBean modulo = modelMod.caricaModulo(idModulo);
+					MessaggioBean messaggio = new MessaggioBean();
+					String destinazione="";
+					if(modulo.getDomanda()){
+						String data = request.getParameter("dataColloquio");
+						data = invertiData(data);
+						destinazione = creaDomandeAccettazione(modulo,data);
+					}
+					messaggio.setIDProprietario(modulo.getidProprietario());
+					if(modulo.getDomanda()){
+						messaggio.setTitolo("Domanda Accettata");
+						String data = request.getParameter("dataColloquio");
+						data = invertiData(data);
+						messaggio.setMessaggio("La domanda da te inviata per "+destinazione+" &egrave stata accettata. <br>Data Colloquio: "+data);
+					}else{
+						messaggio.setTitolo("Modulo Accettato");
+						messaggio.setMessaggio("Il modulo da te inviato per partecipare all'erasmus per "+modulo.getDestinazione1()+" &egrave stato accettato");
+					}
+					modelMes.creaMessaggio(messaggio);
+					if(modulo.getDomanda())
+						dispatcher = caricaModuliDomandaAdmin(request,response,dispatcher);
+					else
+						dispatcher = caricaModuliAccettazioneAdmin(request,response,dispatcher);
 				}else if(action.equalsIgnoreCase("rifiutoModulo")){
 					int idModulo = Integer.parseInt(request.getParameter("idModulo"));
 					modelMod.rifiutoModulo(idModulo);
-					//invio messaggio all'utente che indichi che e stato rifiuto il modulo
-					//redirect alla pagina dei moduli
-/*MessComand*/  } else if (action.equalsIgnoreCase("prendiMessaggi")){
-					int IDProprietario = Integer.parseInt((String) request.getSession().getAttribute("id"));
-					Collection<MessaggioBean> messaggi = modelMes.prendiMessaggi(IDProprietario);
-					request.setAttribute("massaggi", messaggi);
-					//reindirizzamento pagina
+					ModuloBean modulo = modelMod.caricaModulo(idModulo);
+					MessaggioBean messaggio = new MessaggioBean();
+					messaggio.setIDProprietario(modulo.getidProprietario());
+					if(modulo.getDomanda()){
+						messaggio.setTitolo("Errore Domanda");
+						messaggio.setMessaggio("La domanda di partecipazione Erasmus da te inviata non &egrave stata accettata");
+					}else{
+						messaggio.setTitolo("Errore Modulo");
+						messaggio.setMessaggio("Il modulo da te inviato per "+modulo.getDestinazione1()+" non &egrave stato accettato");
+					}
+					modelMes.creaMessaggio(messaggio);
+					if(modulo.getDomanda())
+						dispatcher = caricaModuliDomandaAdmin(request,response,dispatcher);
+					else
+						dispatcher = caricaModuliAccettazioneAdmin(request,response,dispatcher);
+				}else if (action.equalsIgnoreCase("inviaAccettazione")){
+					GregorianCalendar gc = new GregorianCalendar();
+					int idModulo = Integer.parseInt(request.getParameter("idModulo"));
+					String data = gc.get(Calendar.DAY_OF_MONTH)+"/"+gc.get(Calendar.MONTH)+1+"/"+gc.get(Calendar.YEAR);
+					modelMod.aggiungiCarta(idModulo,data, request.getParameter("CartaIdentita"));
+					dispatcher = caricaModuliAccettazioneUtente(request,response,dispatcher);
+				}else if(action.equalsIgnoreCase("caricaListaAccettazioneAdmin")){
+					dispatcher = caricaModuliAccettazioneAdmin(request,response,dispatcher);
 /*GradComand*/  }else if (action.equalsIgnoreCase("caricaGraduatoria")){
 					GraduatoriaBean graduatoria = new GraduatoriaBean();
 					graduatoria.setGraduatoria(Long.parseLong(request.getParameter("graduatoria")));
@@ -148,33 +213,127 @@ public class ProductControl extends HttpServlet {
 					//redirect pagina
 				}
 			}
-			dispatcher.forward(request, response);
+			try{
+				if(request.getSession().getAttribute("id")!=null){
+					int IDProprietario = (int) request.getSession().getAttribute("id");
+					Collection<MessaggioBean> messaggi = modelMes.prendiMessaggi(IDProprietario);
+					request.setAttribute("messaggi", messaggi);
+				}
+				dispatcher.forward(request, response);
+			} catch (IllegalStateException e){
+				String link = request.getParameter("page");
+				if(link!=null)
+					dispatcher = getServletContext().getRequestDispatcher(link);
+				else if((Boolean)(request.getSession().getAttribute("admin")))
+						dispatcher = getServletContext().getRequestDispatcher("/homeImpiegato.jsp");
+					else
+						dispatcher = getServletContext().getRequestDispatcher("/homeStudenti.jsp");
+				dispatcher.forward(request, response);
+			}
 		} catch (SQLException e) {
 			System.out.println("Error:" + e.getMessage());
 		}
-	}
-
-	/*private void reloadAssembler(HttpServletRequest request, HttpServletResponse response, boolean desk,
-			RequestDispatcher dispatcher) throws SQLException, ServletException, IOException {
-		String key = request.getParameter("key");
-		BuildBean build = null;
-		if(key!=null){
-			build = modelBuild.doSearchById(Integer.parseInt(key));
-		}
-		request.setAttribute("build", build);
-		request.setAttribute("comp", modelComp.doRetriveAll());
-		if(desk)
-			request.setAttribute("code", "3");
-		else
-			request.setAttribute("code", "5");
-		Collection<ViewerNewsBean> view = modelView.doRetriveAll();
-		request.setAttribute("view", view);
-		dispatcher.forward(request, response);
 		return;
-		
 	}
 
-	private RequestDispatcher buildManager (HttpServletRequest request, RequestDispatcher dispatcher) throws SQLException {
+	private RequestDispatcher caricaModuliDomandaUtente(HttpServletRequest request, HttpServletResponse response,RequestDispatcher dispatcher) throws SQLException, ServletException, IOException {
+		Collection <ModuloBean> moduliColl = modelMod.caricaModuli((int)request.getSession().getAttribute("id"), true, (Boolean)request.getSession().getAttribute("admin"));
+		request.setAttribute("moduli",moduliColl);
+		Iterator <?> moduliIt = null;
+		int i;
+		ArrayList <ModuloBean> moduli = null;
+		if (request.getAttribute("moduli")!=null){ 
+			moduliIt = moduliColl.iterator();
+			while(moduliIt.hasNext()){
+				if(moduli==null)
+					moduli = new ArrayList <ModuloBean>();
+				moduli.add((ModuloBean)moduliIt.next());
+			}		
+		}
+		for(i=0;i<moduli.size();i++){
+			if(moduli.get(i).getInviaModulo())
+				request.setAttribute("inviato", true);
+		}
+		dispatcher = getServletContext().getRequestDispatcher("/tueRichiesteErasmus.jsp");
+		return dispatcher;
+	}
+	
+	private RequestDispatcher caricaModuliAccettazioneUtente(HttpServletRequest request, HttpServletResponse response,RequestDispatcher dispatcher) throws SQLException, ServletException, IOException {
+		Collection <ModuloBean> moduliColl = modelMod.caricaModuli((int)request.getSession().getAttribute("id"), false, (Boolean)request.getSession().getAttribute("admin"));
+		request.setAttribute("moduli",moduliColl);
+		dispatcher = getServletContext().getRequestDispatcher("/tuoiModuli.jsp");
+		return dispatcher;
+	}
+	
+	private RequestDispatcher caricaModuliDomandaAdmin(HttpServletRequest request, HttpServletResponse response,RequestDispatcher dispatcher) throws SQLException, ServletException, IOException {
+		Collection <ModuloBean> moduliColl = modelMod.caricaModuli(0, true, (Boolean)request.getSession().getAttribute("admin"));
+		request.setAttribute("moduli",moduliColl);
+		dispatcher = getServletContext().getRequestDispatcher("/valutaRichiesteErasmus.jsp");
+		return dispatcher;
+	}
+	
+	private RequestDispatcher caricaModuliAccettazioneAdmin(HttpServletRequest request, HttpServletResponse response,RequestDispatcher dispatcher) throws SQLException, ServletException, IOException {
+		Collection <ModuloBean> moduliColl = modelMod.caricaModuli(0, false, (Boolean)request.getSession().getAttribute("admin"));
+		request.setAttribute("moduli",moduliColl);
+		dispatcher = getServletContext().getRequestDispatcher("/valutaModuliAccettazione.jsp");
+		return dispatcher;
+	}
+	
+	private boolean inviato(HttpServletRequest request) throws SQLException, ServletException, IOException {
+		Boolean inviato = false;
+		if(!(Boolean)request.getSession().getAttribute("admin")){
+			Collection <ModuloBean> moduliColl = modelMod.caricaModuli((int)request.getSession().getAttribute("id"), true, (Boolean)request.getSession().getAttribute("admin"));
+			Iterator <?> moduliIt = null;
+			int i;
+			ArrayList <ModuloBean> moduli = null;
+			moduliIt = moduliColl.iterator();
+			while(moduliIt.hasNext()){
+				if(moduli==null)
+					moduli = new ArrayList <ModuloBean>();
+				moduli.add((ModuloBean)moduliIt.next());
+			}		
+			for(i=0;i<moduli.size();i++){
+				if(moduli.get(i).getInviaModulo())
+					inviato = true;
+			}
+		}
+		return inviato;
+	}
+	
+	private String creaDomandeAccettazione (ModuloBean modulo,String data) throws SQLException, ServletException, IOException{
+		String destinazione;
+		//GregorianCalendar gc = new GregorianCalendar();
+		//modulo.setData(gc.get(Calendar.DAY_OF_MONTH)+"/"+gc.get(Calendar.MONTH)+1+"/"+gc.get(Calendar.YEAR));
+		modulo.setData(data);
+		if(modulo.getDomanda()){
+			modelMod.creaModulo(modulo, false, false);
+		}else{
+			modelMod.confermaModulo(modulo.getID());
+		}
+		destinazione = modulo.getDestinazione1(); 
+		if(modulo.getDestinazione2()!=null){
+			if(!(modulo.getDestinazione2().equalsIgnoreCase("")||modulo.getDestinazione2().equalsIgnoreCase(" "))){
+				modulo.setDestinazione1(modulo.getDestinazione2());
+				modelMod.creaModulo(modulo, false, false);
+				destinazione.concat(", "+modulo.getDestinazione1());
+			}
+		}
+		if(modulo.getDestinazione3()!=null){
+			if(!(modulo.getDestinazione3().equalsIgnoreCase("")||modulo.getDestinazione3().equalsIgnoreCase(" "))){
+				modulo.setDestinazione1(modulo.getDestinazione3());
+				modelMod.creaModulo(modulo, false, false);
+				destinazione.concat(", "+modulo.getDestinazione1());
+			}
+		}
+		return destinazione;
+	}
+	private String invertiData(String data){
+		String data1 = "";
+		data1 = data.substring(8, 10)+"/"+data.substring(5, 7)+"/"+data.substring(0, 4);
+		return data1;
+	}
+	
+	/*private RequestDispatcher buildManager (HttpServletRequest request, RequestDispatcher dispatcher) throws SQLException {
 		Collection<BuildBean> Build;
 		if(((AccountBean)request.getSession().getAttribute("user")).getRules())
 			Build = modelBuild.doRetriveAll();

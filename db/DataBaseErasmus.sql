@@ -34,6 +34,7 @@ CREATE TABLE Modulo (
   Nome char(20) not null,
   Cognome char(20) not null,
   Sesso char (1),
+  DataNascita char(11),
   Data char(11),
   PostaElettronica char(50),
   Matricola char(11),
@@ -48,11 +49,12 @@ CREATE TABLE Modulo (
   Destinazione2 char(30),
   Destinazione3 char(30),
   Domanda boolean,
-  InviaModulo boolean,
-  ConfermaModulo boolean
+  InviaModulo boolean DEFAULT false,
+  ConfermaModulo boolean DEFAULT false
 );
 
-INSERT INTO Modulo values(1,2,"Adamo","Coppola","M","09/01/2018","A.COPPOLA136@studenti.unisa.it","0512103631","Torre Annunziata","Boscotrecase","Via Annunziatella",42,80042,"3407033613"," ","Inghilterra","Francia"," ",true,null,null);
+INSERT INTO Modulo values(1,2,"Adamo","Coppola","M","21/05/1996","09/01/2018","A.COPPOLA136@studenti.unisa.it","0512103631","Torre Annunziata","Boscotrecase","Via Annunziatella",42,80042,"3407033613"," ","Inghilterra","Francia"," ",true,false,false);
+INSERT INTO Modulo values(2,2,"Adamo","Coppola","M","21/05/1996","09/01/2018","A.COPPOLA136@studenti.unisa.it","0512103631","Torre Annunziata","Boscotrecase","Via Annunziatella",42,80042,"3407033613"," ","Spagna","Cina"," ",true,false,false);
 
 DROP TABLE IF EXISTS Graduatoria;
 
@@ -72,6 +74,6 @@ CREATE TABLE Messaggio (
   Visto boolean
 );
 
-INSERT INTO Messaggio values (1,2,"Prova","Questo è un messaggio di prova per vedere se come esce il messaggio e vedere la grandezza e vedere se funziona il sito quindi devo scivere molto giusto per fare qualcosa di utile",false)
+INSERT INTO Messaggio values (1,2,"Prova","Questo &egrave un messaggio di prova per vedere se come esce il messaggio e vedere la grandezza e vedere se funziona il sito quindi devo scivere molto giusto per fare qualcosa di utile",false)
 
 

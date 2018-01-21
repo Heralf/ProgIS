@@ -63,9 +63,10 @@ public class Messaggio {
 	public synchronized Collection<MessaggioBean> prendiMessaggi (int IDProprietario) throws SQLException{
 		PreparedStatement preparedStatement = null;
 		Collection<MessaggioBean> messaggi = new LinkedList<MessaggioBean>();
-		String inserisciSQL = "SELECT * FROM " + Messaggio.TABLE_NAME + " ORDER BY ID DESC";
+		String inserisciSQL = "SELECT * FROM " + Messaggio.TABLE_NAME + " WHERE IDPROPRIETARIO = ? ORDER BY ID DESC";
 		try{
 			preparedStatement = connection.prepareStatement(inserisciSQL);
+			preparedStatement.setInt(1, IDProprietario);
 			ResultSet rs = preparedStatement.executeQuery();
 			while(rs.next()){
 				MessaggioBean messaggio = new MessaggioBean();
