@@ -12,6 +12,7 @@
 
 <head>
 	<meta charset="utf-8">
+	<link rel="icon" href="immagini/favicon.png" type="image/png" />
 	<link rel="stylesheet" type="text/css" href="css/graphic.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<title>Erasmus+</title>	
@@ -20,8 +21,6 @@
 <body>	
 	<% if(id==0){ %>
 	<%@ include file="fragments/sidebar.jsp" %>	
-	<% }else if(admin){ %>
-	<%@ include file="fragments/sidebarImpiegato.jsp" %>
 	<% }else{ %>
 	<%@ include file="fragments/sidebarStudente.jsp" %>
 	<% } %>
