@@ -4,7 +4,7 @@
 	
 	<div id="ColonnaSx">
 	
-		<a href="homeStudenti.jsp"><img id="logo" src="immagini/logo.png" alt="Mia Immagine" height="100"></a>
+		<a href="homeImpiegati.jsp"><img id="logo" src="immagini/logo.png" alt="Mia Immagine" height="100"></a>
 		
 		<div id="benvenuto"> Benvenuto <br> <%= (String)request.getSession().getAttribute("nome") %> 
 		
@@ -14,14 +14,6 @@
 		
 		<div id="boxMessaggi" style= "display: none">
 			<div id= "intestazione">Le tue notifiche</div>
-			
-			<div id="messaggio"> Messaggio 1</div>
-			<div id="messaggio"> Messaggio 1</div>
-			<div id="messaggio"> Messaggio 1</div>
-			<div id="messaggio"> Messaggio 1</div>
-			<div id="messaggio"> Messaggio 1</div>
-			<div id="messaggio"> Messaggio 1</div>
-			<div id="messaggio"> Messaggio 1</div>
 		</div>
 		
 		<a href="product?action=logout"><button 
@@ -54,14 +46,6 @@
 	
 	<div id="boxMessaggi1" style= "display: none">
 			<div id= "intestazione">Le tue notifiche</div>
-			
-			<div id="messaggio"> Messaggio 1</div>
-			<div id="messaggio"> Messaggio 1</div>
-			<div id="messaggio"> Messaggio 1</div>
-			<div id="messaggio"> Messaggio 1</div>
-			<div id="messaggio"> Messaggio 1</div>
-			<div id="messaggio"> Messaggio 1</div>
-			<div id="messaggio"> Messaggio 1</div>
 		</div>
  	
  	<a href="product?action=logout"><button 
