@@ -14,11 +14,15 @@
 	 
             <ul>
             
-    			<li id="LeftText"> <i class="fa fa-home" style="font-size:26.5px;color: red; margin-top: -5px; margin-right:3px; margin-left:4.5px; vertical-align: middle;" aria-hidden="true"> </i> <a href="product?action=redirect&page=/homeStudenti.jsp"> Home</a> </li>
-				<li id="LeftText"> <i class="fa fa-star-o" style="font-size:27px;color:#3399FF; margin-top: -5px; margin-right:3px; margin-left:4px; vertical-align: middle;" aria-hidden="true"></i> <a href="product?action=redirect&page=/graduatorie.jsp" >Controlla graduatorie</a> </li>  
+    			<li id="LeftText"> <i class="fa fa-home" style="font-size:26.5px;color: red; margin-top: -5px; margin-right:3px; margin-left:4.5px; vertical-align: middle;" aria-hidden="true"> </i> <a href="control?action=redirect&page=/homeStudenti.jsp"> Home</a> </li>
+				<li id="LeftText"> <i class="fa fa-star-o" style="font-size:27px;color:#3399FF; margin-top: -5px; margin-right:3px; margin-left:4px; vertical-align: middle;" aria-hidden="true"></i> <a href="control?action=redirect&page=/graduatorie.jsp" >Controlla graduatorie</a> </li>  
 				
 			</ul> 			
- 	
+		<p id= "suggerimento">Hai problemi a visualizzare i contenuti della pagina? <br> Rendili più grandi o più piccoli.<br>
+ 		<button id="tastoModificaFont" onclick="modificaTestoLittle()"> <i class="fa fa-font" style="font-size: 20px;color: black; vertical-align: middle;"> </i> </button>
+ 		<button id="tastoModificaFont" onclick="modificaTestoMiddle()"> <i class="fa fa-font" style="font-size: 25px;color: black; margin-top: -5px; vertical-align: middle;"> </i> </button>
+ 		<button id="tastoModificaFont" onclick="modificaTestoBig()"> <i class="fa fa-font" style="font-size: 30px;color: black; margin-top: -10px; vertical-align: middle;"> </i> </button>
+ 	</div>
  	</div>
 		
 			
@@ -34,5 +38,41 @@
 				
 				<li id="OrizText"> <i class="fa fa-home" style="font-size:26.5px;color: red ;margin-top: -3px; margin-right:3px;margin-left:4.5px;vertical-align: middle;" aria-hidden="true"> </i> <a href="homeStudenti.jsp"> Home</a> </li>
 				<li id="OrizText"> <i class="fa fa-star-o" style="font-size:27px;color:#3399FF; margin-top: -3px;margin-right:3px;margin-left:4px;vertical-align: middle;" aria-hidden="true"></i> <a href="graduatorie.jsp" >Controlla graduatorie</a> </li>    
-				  
+				  	<p id= "suggerimento1">Hai problemi a visualizzare i contenuti della pagina? <br> Rendili più grandi o più piccoli. <br>
+ 		<button id="tastoModificaFont1" onclick="modificaTestoLittle()"> <i class="fa fa-font" style="font-size: 20px;color: black; vertical-align: middle;"> </i> </button>
+ 		<button id="tastoModificaFont1" onclick="modificaTestoMiddle()"> <i class="fa fa-font" style="font-size: 25px;color: black; margin-top: -5px; vertical-align: middle;"> </i> </button>
+ 		<button id="tastoModificaFont1" onclick="modificaTestoBig()"> <i class="fa fa-font" style="font-size: 30px;color: black; margin-top: -10px; vertical-align: middle;"> </i> </button>
 	</div>
+	
+	<script type="text/javascript">
+<!--
+		
+//-->
+
+		function myFunction() {
+   		 var x = document.getElementById("boxMessaggi");
+   		 var y = document.getElementById("boxMessaggi1");
+    		if (x.style.display === "none") {
+        		x.style.display = "block";
+        		y.style.display = "block";
+    		} else {
+        		x.style.display = "none";
+        		y.style.display = "none";
+    		}	
+		} 
+		
+		function modificaTestoBig(){
+			var h = document.getElementById("corpo");
+			h.style.fontSize = "16pt";
+		}
+		
+		function modificaTestoMiddle(){
+			var h = document.getElementById("corpo");
+			h.style.fontSize = "13pt";
+		}
+		
+		function modificaTestoLittle(){
+			var h = document.getElementById("corpo");
+			h.style.fontSize = "10pt";
+		}
+	</script>

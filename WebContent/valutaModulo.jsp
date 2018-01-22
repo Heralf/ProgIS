@@ -56,7 +56,7 @@
   			<p id="inputEtichetta"> Destinazione:	<%= modulo.getDestinazione1() %>	<br>
   			
   			<p id="inputEtichetta"> Carta di Identita':	<%= modulo.getCartaIdentita() %>	<br>
-  			<form>
+  			<form action="control" method="post">
   				<input type="text" name="idModulo" value="<%= modulo.getID() %>" style="visibility:hidden;">
   				<button 
 					id="tastoRespingi" type="submit" name="action" value="rifiutoModulo"> <i class="fa fa-thumbs-down" style="font-size:25.5px;color:red; margin-right:1px;margin-left:4px; margin-bottom: 2.5px; vertical-align: middle;" aria-hidden="true"> </i> Respingi

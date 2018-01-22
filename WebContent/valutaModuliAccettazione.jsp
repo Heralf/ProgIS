@@ -59,7 +59,7 @@
 				
 					Destinazione: <%= moduli.get(i).getDestinazione1() %>
 			
-					<a href="product?action=caricaModulo&idModulo=<%= moduli.get(i).getID() %>&page=/valutaModulo.jsp"><button 
+					<a href="control?action=caricaModulo&idModulo=<%= moduli.get(i).getID() %>&page=/valutaModulo.jsp"><button 
 						id="tastoDomandeErasmus1"> <i class="fa fa-gavel" style="font-size:25.5px;color:#FF6633; margin-right:2.5px; margin-left:3px; margin-bottom: 3px; vertical-align: middle;" aria-hidden="true"> </i> Valuta
      				</button></a>
     			</div>

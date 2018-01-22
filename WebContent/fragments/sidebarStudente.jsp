@@ -25,15 +25,19 @@
 			<div id="messaggio"> <%= messaggi.get(j).getTitolo()%> : <%= messaggi.get(j).getMessaggio() %></div>
 		<%	} %>
 		</div>
-		<a href="product?action=logout"><button 	
+		<a href="control?action=logout"><button 	
 			id="tastoAccediLaterale"> <i class="fa fa-sign-in" style="font-size:28px;color:#FF6633; margin-right:3px;margin-left:5px;vertical-align: middle;" aria-hidden="true"> </i> Esci
      	</button></a>
             <ul>
-    			<li id="LeftText"> <i class="fa fa-home" style="font-size:26.5px;color: red; margin-top: -5px; margin-right:3px; margin-left:4.5px; vertical-align: middle;" aria-hidden="true"> </i> <a href="product?action=redirect&page=/homeStudenti.jsp"> Home</a> </li>
-				<li id="LeftText"> <i class="fa fa-puzzle-piece" style="font-size:26.5px;color:#FF6633; margin-top: -5px; margin-right:2.5px; margin-left:5px; vertical-align: middle;" aria-hidden="true"></i> <a href="product?action=caricaListaModuliUtente">Le tue richieste Erasmus</a> </li>
-				<li id="LeftText"> <i class="fa fa-file-text" style="font-size:23.5px;color:#00BCD4; margin-top: -5px; margin-right:7.5px; margin-left:5px; vertical-align: middle;" aria-hidden="true"></i> <a href="product?action=caricaListaAccettazioneUtente">I tuoi moduli</a> </li>
-				<li id="LeftText"> <i class="fa fa-star-o" style="font-size:27px;color:#3399FF; margin-top: -5px; margin-right:3px; margin-left:4px; vertical-align: middle;" aria-hidden="true"></i> <a href="product?action=redirect&page=/graduatorie.jsp" >Controlla graduatorie</a> </li>  
-			</ul> 			
+    			<li id="LeftText"> <i class="fa fa-home" style="font-size:26.5px;color: red; margin-top: -5px; margin-right:3px; margin-left:4.5px; vertical-align: middle;" aria-hidden="true"> </i> <a href="control?action=redirect&page=/homeStudenti.jsp"> Home</a> </li>
+				<li id="LeftText"> <i class="fa fa-puzzle-piece" style="font-size:26.5px;color:#FF6633; margin-top: -5px; margin-right:2.5px; margin-left:5px; vertical-align: middle;" aria-hidden="true"></i> <a href="control?action=caricaListaModuliUtente">Le tue richieste Erasmus</a> </li>
+				<li id="LeftText"> <i class="fa fa-file-text" style="font-size:23.5px;color:#00BCD4; margin-top: -5px; margin-right:7.5px; margin-left:5px; vertical-align: middle;" aria-hidden="true"></i> <a href="control?action=caricaListaAccettazioneUtente">I tuoi moduli</a> </li>
+				<li id="LeftText"> <i class="fa fa-star-o" style="font-size:27px;color:#3399FF; margin-top: -5px; margin-right:3px; margin-left:4px; vertical-align: middle;" aria-hidden="true"></i> <a href="control?action=redirect&page=/graduatorie.jsp" >Controlla graduatorie</a> </li>  
+			</ul> 	
+			<p id= "suggerimento">Hai problemi a visualizzare i contenuti della pagina? <br> Rendili più grandi o più piccoli.<br>
+ 		<button id="tastoModificaFont" onclick="modificaTestoLittle()"> <i class="fa fa-font" style="font-size: 20px;color: black; vertical-align: middle;"> </i> </button>
+ 		<button id="tastoModificaFont" onclick="modificaTestoMiddle()"> <i class="fa fa-font" style="font-size: 25px;color: black; margin-top: -5px; vertical-align: middle;"> </i> </button>
+ 		<button id="tastoModificaFont" onclick="modificaTestoBig()"> <i class="fa fa-font" style="font-size: 30px;color: black; margin-top: -10px; vertical-align: middle;"> </i> </button>		
  	</div>
 	<div id="rigaCentrale">	
 		<a href=""homeStudenti.jsp""><img id="logoPortrait" src="immagini/logo.png" alt="Mia Immagine" height="130" width="350"></a>
@@ -46,15 +50,23 @@
 			<div id="messaggio"> <%= messaggi.get(j).getTitolo()%> : <%= messaggi.get(j).getMessaggio() %></div>
 		<%	} %>
 		</div>
-		<a href="product?action=logout"><button 
+		<a href="control?action=logout"><button 
 				id="tastoAccediPortrait"> <i class="fa fa-sign-in" style="font-size:29px;color:#FF6633; margin-right:3px;margin-left:5px;vertical-align: middle;" aria-hidden="true"> </i> Esci
     	</button></a>
-				<li id="OrizText"> <i class="fa fa-home" style="font-size:26.5px;color: red ;margin-top: -3px; margin-right:3px;margin-left:4.5px;vertical-align: middle;" aria-hidden="true"> </i> <a href="product?action=redirect&page=/homeStudenti.jsp"> Home</a> </li>
-				<li id="OrizText"> <i class="fa fa-puzzle-piece" style="font-size:26.5px;color:#FF6633; margin-top: -3px;margin-right:3px;margin-left:5px;vertical-align: middle;" aria-hidden="true"></i> <a href="product?action=caricaListaModuliUtente">Le tue richieste Erasmus</a> </li>
-				<li id="OrizText"> <i class="fa fa-file-text" style="font-size:24px;color:#00BCD4; margin-top: -3px;margin-right:7px;margin-left:5px;vertical-align: middle;" aria-hidden="true"></i> <a href="product?action=caricaListaAccettazioneUtente">I tuoi moduli</a> </li>
-				<li id="OrizText"> <i class="fa fa-star-o" style="font-size:27px;color:#3399FF; margin-top: -3px;margin-right:3px;margin-left:4px;vertical-align: middle;" aria-hidden="true"></i> <a href="product?action=redirect&page=/graduatorie.jsp" >Controlla graduatorie</a> </li>   
+				<li id="OrizText"> <i class="fa fa-home" style="font-size:26.5px;color: red ;margin-top: -3px; margin-right:3px;margin-left:4.5px;vertical-align: middle;" aria-hidden="true"> </i> <a href="control?action=redirect&page=/homeStudenti.jsp"> Home</a> </li>
+				<li id="OrizText"> <i class="fa fa-puzzle-piece" style="font-size:26.5px;color:#FF6633; margin-top: -3px;margin-right:3px;margin-left:5px;vertical-align: middle;" aria-hidden="true"></i> <a href="control?action=caricaListaModuliUtente">Le tue richieste Erasmus</a> </li>
+				<li id="OrizText"> <i class="fa fa-file-text" style="font-size:24px;color:#00BCD4; margin-top: -3px;margin-right:7px;margin-left:5px;vertical-align: middle;" aria-hidden="true"></i> <a href="control?action=caricaListaAccettazioneUtente">I tuoi moduli</a> </li>
+				<li id="OrizText"> <i class="fa fa-star-o" style="font-size:27px;color:#3399FF; margin-top: -3px;margin-right:3px;margin-left:4px;vertical-align: middle;" aria-hidden="true"></i> <a href="control?action=redirect&page=/graduatorie.jsp" >Controlla graduatorie</a> </li> 
+				<p id= "suggerimento1">Hai problemi a visualizzare i contenuti della pagina? <br> Rendili più grandi o più piccoli. <br>
+ 		<button id="tastoModificaFont1" onclick="modificaTestoLittle()"> <i class="fa fa-font" style="font-size: 20px;color: black; vertical-align: middle;"> </i> </button>
+ 		<button id="tastoModificaFont1" onclick="modificaTestoMiddle()"> <i class="fa fa-font" style="font-size: 25px;color: black; margin-top: -5px; vertical-align: middle;"> </i> </button>
+ 		<button id="tastoModificaFont1" onclick="modificaTestoBig()"> <i class="fa fa-font" style="font-size: 30px;color: black; margin-top: -10px; vertical-align: middle;"> </i> </button>  
 	</div>
 	<script type="text/javascript">
+<!--
+		
+//-->
+
 		function myFunction() {
    		 var x = document.getElementById("boxMessaggi");
    		 var y = document.getElementById("boxMessaggi1");
@@ -64,6 +76,21 @@
     		} else {
         		x.style.display = "none";
         		y.style.display = "none";
-    		}
+    		}	
 		} 
+		
+		function modificaTestoBig(){
+			var h = document.getElementById("corpo");
+			h.style.fontSize = "16pt";
+		}
+		
+		function modificaTestoMiddle(){
+			var h = document.getElementById("corpo");
+			h.style.fontSize = "13pt";
+		}
+		
+		function modificaTestoLittle(){
+			var h = document.getElementById("corpo");
+			h.style.fontSize = "10pt";
+		}
 	</script>

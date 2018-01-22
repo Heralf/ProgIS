@@ -86,7 +86,7 @@
 			Scegli questo Erasmus? <br><br>
 			Clicca su "compila" e compila il modulo. 
 			<button 
-				id="tastoModuli1" onclick="location.href='product?action=caricaModulo&idModulo=<%= moduli.get(i).getID() %>&page=/compilaModulo.jsp'" <% if(moduli.get(i).getInviaModulo()) {%> disabled=”disabled” <% } %> <%	if(disabilita){%> disabled=”disabled” <% } %>> <i class="fa fa-pencil" style="font-size:24.5px;color:#FF6633; margin-right:3px;margin-left:4px; margin-bottom: 3px; vertical-align: middle;" aria-hidden="true"> </i> Compila
+				id="tastoModuli1" onclick="location.href='control?action=caricaModulo&idModulo=<%= moduli.get(i).getID() %>&page=/compilaModulo.jsp'" <% if(moduli.get(i).getInviaModulo()) {%> disabled=”disabled” <% } %> <%	if(disabilita){%> disabled=”disabled” <% } %>> <i class="fa fa-pencil" style="font-size:24.5px;color:#FF6633; margin-right:3px;margin-left:4px; margin-bottom: 3px; vertical-align: middle;" aria-hidden="true"> </i> Compila
      		</button>
      		
      	</div>

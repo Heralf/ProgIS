@@ -55,7 +55,7 @@
 			Destinazione: <%=moduli.get(i).getDestinazione1()%>
 			<%=moduli.get(i).getDestinazione2()%>
 			<%=moduli.get(i).getDestinazione3()%>
-			<a href="product?action=caricaModulo&idModulo=<%=moduli.get(i).getID()%>&page=/valutaRichiesta.jsp"><button 
+			<a href="control?action=caricaModulo&idModulo=<%=moduli.get(i).getID()%>&page=/valutaRichiesta.jsp"><button 
 				id="tastoDomandeErasmus1"> <i class="fa fa-gavel" style="font-size:25.5px;color:#FF6633; margin-right:2.5px; margin-left:3px; margin-bottom: 3px; vertical-align: middle;" aria-hidden="true"> </i> Valuta
      			</button>
      		</a>

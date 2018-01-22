@@ -58,7 +58,7 @@
   		
   			<p id="inputEtichetta"> Destinazione 3:	<%= modulo.getDestinazione3() %>	<br>
   			
-  			<form action="product" method="post" name="controllo">
+  			<form action="control" method="post">
   			
   			<p id="inputEtichetta"> Data Colloquio:	<input id="inserisciTesto" type="date" name="dataColloquio" required>
   			

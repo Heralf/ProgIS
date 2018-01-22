@@ -24,7 +24,7 @@
 		</div>	
 		<div id="contenuto">		
 			<div id="testoLogin"> 
-			<form action="product" method="post">		
+			<form action="control" method="post">		
 				Accedi inserendo le tue credenziali universitarie.<br><br>			
 			 	<p id="inputEtichetta"> Email: <br>
 			 	<input id="inserisciTesto" type="text" name="email" required> <%	if(errore!=null&&errore){ %> <font color="red">	Email non registrata </font>	<%	} %> <br>
@@ -36,5 +36,6 @@
      		</form>
 			</div>
 		</div>
+	</div>
 </body>
 </html>

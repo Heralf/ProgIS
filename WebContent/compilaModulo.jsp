@@ -66,7 +66,7 @@
   		
   			<p id="inputEtichetta"> Numero Telefonico:<br>
   			<input id="inserisciTesto" type="text" name="numeroTelefonico" disabled="disabled" value="<%= account.getNumeroTelefonico() %>"><br>
-  			<form>
+  			<form action="control" method="post">
   				<input name="idModulo" value="<%= modulo.getID() %>" style="visibility:hidden;">
   				<p id="inputEtichetta"> Codice Carta Identita':<br>
   				<input id="inserisciTesto" type="text" name="CartaIdentita" required><br>  									
