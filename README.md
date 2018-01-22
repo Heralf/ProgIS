@@ -1,5 +1,5 @@
 # ProgIS
-Progetto per l'esame di IS
+Progetto di Ingegneria del Software
 
 Partecipanti al progetto :  
                             Gaetano Manzo,
