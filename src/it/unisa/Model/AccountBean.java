@@ -163,6 +163,8 @@ public class AccountBean implements Serializable {
 		
 	@Override
 	public String toString() {
-		return Nome + " " + Cognome + " (" + Matricola + ") " + " " + Data + " " + " " + Sesso + " " + PostaElettronica + " " + Password + " " + CittaNascita + " " + CittaResidenza + " " + Indirizzo + " " + NumeroCivico + " " + CAP + " " + " Amministratore( " + Admin + " ) "+ NumeroTelefonico;
+		return Nome + " " + Cognome + " (" + Matricola + ") " + " " + Data + " " + " " + Sesso + " " + PostaElettronica + " " + 
+			   Password + " " + CittaNascita + " " + CittaResidenza + " " + Indirizzo + " " + NumeroCivico + " " + CAP + " " + 
+			   " Amministratore( " + Admin + " ) "+ NumeroTelefonico;
 	}
 }
