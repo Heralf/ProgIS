@@ -56,6 +56,7 @@
 			   <a href="graduatorie.jsp" > Controlla graduatorie </a> 
 		</li>    
 		<p id="suggerimento1"> Gestisci Grandezza Caratteri
+		<br>
  		<button id="tastoModificaFont1" onclick="modificaTestoLittle()"> 
  			<i class="fa fa-font" style="font-size:20px; color:black; vertical-align:middle;"> </i> 
  		</button>
@@ -86,12 +87,12 @@
 		
 		function modificaTestoBig(){
 			var h = document.getElementById("corpo");
-			h.style.fontSize = "16pt";
+			h.style.fontSize = "14pt";
 		}
 		
 		function modificaTestoMiddle(){
 			var h = document.getElementById("corpo");
-			h.style.fontSize = "13pt";
+			h.style.fontSize = "12pt";
 		}
 		
 		function modificaTestoLittle(){
