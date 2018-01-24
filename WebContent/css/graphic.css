@@ -34,7 +34,7 @@ body{
 }
 
 #suggerimento1{
-	margin-left:35px;
+	margin-left:36px;
 	margin-top:22px;
 	margin-right:10px;
 	margin-bottom:10px;
@@ -618,7 +618,7 @@ body{
 	margin-bottom:10px;
 	padding-top:20px;
 	padding-left:17px;
-	padding-right:10px;
+	padding-right:17px;
 	padding-bottom:12px;
 	transition:all 0.35s ease 0s;
 }
