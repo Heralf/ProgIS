@@ -349,7 +349,7 @@ body{
 	border:0px;
 	font-weight:light;
 	font-size:large;
-	color: black;
+	color:black;
 	border-radius:2px;
 }
 
@@ -492,7 +492,7 @@ body{
 	border:0px;
 	font-weight:light;
 	font-size:large;
-	color: black;
+	color:black;
 	border-radius:3px;
 }
 
@@ -599,7 +599,7 @@ body{
 	border:0px;
 	font-weight:light;
 	font-size:large;
-	color: black;
+	color:black;
 	border-radius:2px;
 }
 
@@ -755,7 +755,7 @@ a:link, a:visited {
 a{
 	font-weight:light;
 	font-size:large;
-	color: black;
+	color:black;
 }
 
 a:hover { 
