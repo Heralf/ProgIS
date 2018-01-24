@@ -55,7 +55,7 @@
 				<a href="control?action=redirect&page=/graduatorie.jsp"> Controlla graduatorie </a> 
 			</li>  
 		</ul> 	
-		<p id="suggerimento"> Hai problemi a visualizzare i contenuti della pagina? <br> Rendili più grandi o più piccoli. <br>
+		<p id="suggerimento"> Gestisci Grandezza Caratteri
  		<button id="tastoModificaFont" onclick="modificaTestoLittle()"> 
  			<i class="fa fa-font" style="font-size:20px; color:black; vertical-align:middle;"> </i> 
  		</button>
@@ -107,7 +107,7 @@
 			vertical-align:middle;" aria-hidden="true"> </i> 
 			<a href="control?action=redirect&page=/graduatorie.jsp"> Controlla graduatorie </a> 
 		</li> 
-		<p id="suggerimento1"> Hai problemi a visualizzare i contenuti della pagina? <br> Rendili più grandi o più piccoli. <br>
+		<p id="suggerimento1"> Gestisci Grandezza Caratteri
  		<button id="tastoModificaFont1" onclick="modificaTestoLittle()"> 
  			<i class="fa fa-font" style="font-size: 20px; color:black; vertical-align:middle;"> </i> 
  		</button>
