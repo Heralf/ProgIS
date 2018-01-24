@@ -55,7 +55,7 @@
 				<a href="control?action=redirect&page=/graduatorie.jsp"> Controlla graduatorie </a> 
 			</li>  
 		</ul> 	
-		<p id="suggerimento"> Gestisci Grandezza Caratteri 
+		<p id="suggerimento"> Gestisci Grandezza Caratteri
 		<br>
  		<button id="tastoModificaFont" onclick="modificaTestoLittle()"> 
  			<i class="fa fa-font" style="font-size:20px; color:black; vertical-align:middle;"> </i> 
@@ -68,7 +68,7 @@
  		</button>		
  	</div>
 	<div id="rigaCentrale">	
-		<a href=""homeStudenti.jsp"">
+		<a href="homeStudenti.jsp">
 			<img id="logoPortrait" src="immagini/logo.png" alt="Mia Immagine" height="130" width="350">
 		</a>
 		<div id="benvenuto"> Benvenuto <br> <%= (String)request.getSession().getAttribute("nome") %>
@@ -109,6 +109,7 @@
 			<a href="control?action=redirect&page=/graduatorie.jsp"> Controlla graduatorie </a> 
 		</li> 
 		<p id="suggerimento1"> Gestisci Grandezza Caratteri
+		<br>
  		<button id="tastoModificaFont1" onclick="modificaTestoLittle()"> 
  			<i class="fa fa-font" style="font-size: 20px; color:black; vertical-align:middle;"> </i> 
  		</button>

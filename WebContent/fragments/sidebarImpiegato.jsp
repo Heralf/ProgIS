@@ -53,7 +53,7 @@
  	</div>
  	</div>			
 	<div id="rigaCentrale">
-		<a href=""homeStudenti.jsp"">
+		<a href="homeStudenti.jsp">
 			<img id="logoPortrait" src="immagini/logo.png" alt="Mia Immagine" height="130" width="350">
 		</a>  
  	<div id="benvenuto"> Benvenuto <br> <%= (String)request.getSession().getAttribute("nome") %> 
