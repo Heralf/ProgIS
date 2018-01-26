@@ -5,6 +5,7 @@
 	Iterator <?> moduliIt = null;
 	ArrayList <ModuloBean> moduli = null;
 	Boolean inviato = false;
+	Boolean contaModuli = false;
 	if (request.getAttribute("moduli")!=null){ 
 		moduliColl = (Collection <?>) request.getAttribute("moduli");
 		moduliIt = moduliColl.iterator();
@@ -16,7 +17,10 @@
   	} 
   	if(request.getAttribute("inviato")!=null){
   		inviato = (Boolean)request.getAttribute("inviato");
-  	} %>
+  	} 
+  	if(request.getAttribute("contaModuli")!=null){
+  		contaModuli = (Boolean)request.getAttribute("inviato");
+  	}%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
