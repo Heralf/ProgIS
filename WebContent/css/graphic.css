@@ -743,7 +743,31 @@ body{
 	border-radius:2px;
 }
 
+#tastoRespingi2{		/* TASTO ACCETTA */
+	height:42px;
+	width:137px;
+	padding-left:4px;
+	padding-top:3px;
+	margin-left:217px;
+	margin-top:10px;
+	margin-bottom:5px;
+	float:left;
+	clear:both;
+	box-shadow:1px  1px 3px #2ecc71;;
+	transition:all 0.35s ease 0s;
+	background:white;
+	border:0px;
+	font-weight:light;
+	font-size:large;
+	color:black;
+	border-radius:2px;
+}
+
 #tastoRespingi1:hover{  		/* TASTO ACCETTA */
+	box-shadow:1px  1px 10px #2ecc71;;
+}
+
+#tastoRespingi2:hover{  		/* TASTO ACCETTA */
 	box-shadow:1px  1px 10px #2ecc71;;
 }
 
