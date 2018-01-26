@@ -70,20 +70,17 @@
 					Destinazioni: <%= moduli.get(i).getDestinazione1() %>,  <%= moduli.get(i).getDestinazione2() %>,  
 					<%= moduli.get(i).getDestinazione3() %>	
 					<% if(!moduli.get(i).getInviaModulo()) { %>
-					<button id="tastoDomandeErasmus1" onclick="location.href='control?action=caricaModulo&idModulo=
-						<%= moduli.get(i).getID() %>&page=/compilaDomandaErasmus.jsp'"> 
+					<button id="tastoDomandeErasmus1" onclick="location.href='control?action=caricaModulo&idModulo=<%= moduli.get(i).getID() %>&page=/compilaDomandaErasmus.jsp'"> 
 						<i class="fa fa-repeat" style="font-size:24.5px; color:#FF6633; margin-right:3px; margin-left:4px; 
 						   margin-bottom:3px; vertical-align: middle;" aria-hidden="true"> </i> Modifica      	
    	  				</button>  		
-   	  				<button id="tastoDomandeErasmus3" onclick="location.href='control?action=cancellaModulo&idModulo=
-   	  					<%= moduli.get(i).getID() %>'"> 
+   	  				<button id="tastoDomandeErasmus3" onclick="location.href='control?action=cancellaModulo&idModulo=<%= moduli.get(i).getID() %>'"> 
    	  					<i class="fa fa-times" style="font-size:28px; color:red; margin-right:2px; margin-left:4px; margin-bottom:5px; 
    	  					   vertical-align:middle;" aria-hidden="true"> </i> Cancella     	
    	  				</button>  
    	  				<% } 
    	  				   if(!inviato) { %>   									
-   	  				<button id="tastoDomandeErasmus2" onclick="location.href='control?action=InviaModulo&idModulo=
-   	  					<%= moduli.get(i).getID() %>'" <% if(inviato) { %> disabled=”disabled” <% } %> > 
+   	  				<button id="tastoDomandeErasmus2" onclick="location.href='control?action=InviaModulo&idModulo=<%= moduli.get(i).getID() %>'" <% if(inviato) { %> disabled=”disabled” <% } %> > 
    	  					<i class="fa fa-paper-plane" style="font-size:23px; color:#2ecc71; margin-right:3px; margin-left:4px; 
    	  					   margin-bottom:1px; vertical-align:middle;" aria-hidden="true"> </i> Invia     	
    	  				</button>   
