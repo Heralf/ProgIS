@@ -45,9 +45,9 @@ CREATE TABLE Modulo (
   CAP int,
   NumeroTelefonico char(20),
   CartaIdentita char(10),
-  Destinazione1 char(30),
-  Destinazione2 char(30),
-  Destinazione3 char(30),
+  Destinazione1 char(60),
+  Destinazione2 char(60),
+  Destinazione3 char(60),
   Domanda boolean,
   InviaModulo boolean DEFAULT false,
   ConfermaModulo boolean DEFAULT false
