@@ -84,11 +84,14 @@ public class ErasmusControl extends HttpServlet {
 					modulo.setDestinazione2(request.getParameter("destinazione2"));
 					modulo.setDestinazione3(request.getParameter("destinazione3"));
 					modulo.setAccount(modelAcc.doSearchByEmail(email));
-					modelMod.creaModulo(modulo, true, false);
+					if(contaModuli(request))
+						modelMod.creaModulo(modulo, true, false);
 					dispatcher = caricaModuliDomandaUtente(request,response,dispatcher);
 				}else if(action.equalsIgnoreCase("compilaDomandaErasmus")){
 					int ID = (int)request.getSession().getAttribute("id");
 					request.setAttribute("account",modelAcc.doSearchByID(ID));
+					request.setAttribute("inviato",inviato(request));
+					request.setAttribute("contaModuli",contaModuli(request));
 					dispatcher = getServletContext().getRequestDispatcher("/compilaDomandaErasmus.jsp");
 				}else if (action.equalsIgnoreCase("caricaModulo")){
 					int idModulo = Integer.parseInt(request.getParameter("idModulo"));
@@ -125,7 +128,8 @@ public class ErasmusControl extends HttpServlet {
 					modulo.setDestinazione2(request.getParameter("destinazione2"));
 					modulo.setDestinazione3(request.getParameter("destinazione3"));
 					modulo.setAccount(modelAcc.doSearchByEmail(email));
-					modelMod.creaModulo(modulo, true, true);
+					if(!inviato(request)&&contaModuli(request))
+						modelMod.creaModulo(modulo, true, true);
 					dispatcher = caricaModuliDomandaUtente(request,response,dispatcher);
 				}else if(action.equals("InviaModulo")){
 					int idModulo = Integer.parseInt(request.getParameter("idModulo"));
@@ -212,12 +216,12 @@ public class ErasmusControl extends HttpServlet {
 					//reindirizzamento pagina
 				}
 			}
-				if(request.getSession().getAttribute("id")!=null){
-					int IDProprietario = (int) request.getSession().getAttribute("id");
-					Collection<MessaggioBean> messaggi = modelMes.prendiMessaggi(IDProprietario);
-					request.setAttribute("messaggi", messaggi);
-				}
-				dispatcher.forward(request, response);
+			if(request.getSession().getAttribute("id")!=null){
+				int IDProprietario = (int) request.getSession().getAttribute("id");
+				Collection<MessaggioBean> messaggi = modelMes.prendiMessaggi(IDProprietario);
+				request.setAttribute("messaggi", messaggi);
+			}
+			dispatcher.forward(request, response);
 		} catch (SQLException e) {
 			System.out.println("Error:" + e.getMessage());
 		}
@@ -244,6 +248,7 @@ public class ErasmusControl extends HttpServlet {
 			if(moduli.get(i).getInviaModulo())
 				request.setAttribute("inviato", true);
 		}
+		request.setAttribute("contaModuli",contaModuli(request));
 		dispatcher = getServletContext().getRequestDispatcher("/tueRichiesteErasmus.jsp");
 		return dispatcher;
 	}
@@ -297,6 +302,7 @@ public class ErasmusControl extends HttpServlet {
 	private String creaDomandeAccettazione (ModuloBean modulo,String data) throws SQLException, ServletException, IOException{
 		String destinazione;
 		modulo.setData(data);
+		modulo.getAccount().setID(modulo.getidProprietario());
 		if(modulo.getDomanda()){
 			modelMod.creaModulo(modulo, false, false);
 		}else{
@@ -324,6 +330,25 @@ public class ErasmusControl extends HttpServlet {
 		String data1 = "";
 		data1 = data.substring(8, 10)+"/"+data.substring(5, 7)+"/"+data.substring(0, 4);
 		return data1;
+	}
+	
+	private boolean contaModuli(HttpServletRequest request) throws SQLException{
+		boolean contaModuli = true;
+		if(!(Boolean)request.getSession().getAttribute("admin")){
+			Collection <ModuloBean> moduliColl = modelMod.caricaModuli((int)request.getSession().getAttribute("id"), true, 
+					(Boolean)request.getSession().getAttribute("admin"));
+			Iterator <?> moduliIt = null;
+			ArrayList <ModuloBean> moduli = null;
+			moduliIt = moduliColl.iterator();
+			while(moduliIt.hasNext()){
+				if(moduli==null)
+					moduli = new ArrayList <ModuloBean>();
+				moduli.add((ModuloBean)moduliIt.next());
+			}		
+			if(moduli.size()==10)
+				contaModuli = false;
+		}
+		return contaModuli;
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
