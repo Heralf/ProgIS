@@ -159,12 +159,12 @@ public class ErasmusControl extends HttpServlet {
 						messaggio.setTitolo("Domanda Accettata");
 						String data = request.getParameter("dataColloquio");
 						data = invertiData(data);
-						messaggio.setMessaggio("La domanda da te inviata per "+ destinazione +" &egrave stata accettata. "
+						messaggio.setMessaggio("La domanda da te inviata per &quot;"+ destinazione +"&quot; &egrave stata accettata. "
 								+ "<br>Data Colloquio: "+ data);
 					}else{
 						messaggio.setTitolo("Modulo Accettato");
-						messaggio.setMessaggio("Il modulo da te inviato per partecipare all'erasmus per "+ modulo.getDestinazione1() 
-								+" &egrave stato accettato");
+						messaggio.setMessaggio("Il modulo da te inviato per partecipare all'erasmus per &quot;"+ modulo.getDestinazione1() 
+								+"&quot; &egrave stato accettato");
 					}
 					modelMes.creaMessaggio(messaggio);
 					if(modulo.getDomanda())
@@ -308,19 +308,19 @@ public class ErasmusControl extends HttpServlet {
 		}else{
 			modelMod.confermaModulo(modulo.getID());
 		}
-		destinazione = modulo.getDestinazione1(); 
+		destinazione = modulo.getDestinazione1();
 		if(modulo.getDestinazione2()!=null){
 			if(!(modulo.getDestinazione2().equalsIgnoreCase("")||modulo.getDestinazione2().equalsIgnoreCase(" "))){
 				modulo.setDestinazione1(modulo.getDestinazione2());
 				modelMod.creaModulo(modulo, false, false);
-				destinazione.concat(", "+ modulo.getDestinazione1());
+				destinazione = destinazione.concat(", "+modulo.getDestinazione1());
 			}
 		}
 		if(modulo.getDestinazione3()!=null){
 			if(!(modulo.getDestinazione3().equalsIgnoreCase("")||modulo.getDestinazione3().equalsIgnoreCase(" "))){
 				modulo.setDestinazione1(modulo.getDestinazione3());
 				modelMod.creaModulo(modulo, false, false);
-				destinazione.concat(", "+ modulo.getDestinazione1());
+				destinazione= destinazione.concat(", "+modulo.getDestinazione1());
 			}
 		}
 		return destinazione;
