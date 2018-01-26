@@ -45,7 +45,7 @@ public class Modulo{
 					+ "DESTINAZIONE1, CARTAIDENTITA , DOMANDA, INVIAMODULO) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try{
 			preparedStatement = connection.prepareStatement(inserisciSQL);
-			preparedStatement.setInt(1,modulo.getidProprietario());
+			preparedStatement.setInt(1,modulo.getAccount().getID());
 			preparedStatement.setString(2,modulo.getAccount().getNome());
 			preparedStatement.setString(3,modulo.getAccount().getCognome());
 			preparedStatement.setString(4,modulo.getAccount().getSesso());
