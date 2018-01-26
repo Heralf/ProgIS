@@ -9,22 +9,10 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import it.unisa.DriverManagerConnectionPool;
+
 public class Graduatoria {
 	private static DataSource ds;
-	
-	static {
-		//utilizzo questa funzione per testarte se la connessione al server avviene con successo
-		try {
-			Context initCtx = new InitialContext();
-			Context envCtx = (Context) initCtx.lookup("java:comp/env");
-			//qui metto Erasmus perche e il database dove si deve collegare
-			ds = (DataSource) envCtx.lookup("jdbc/Erasmus");
-
-		} catch (NamingException e) {
-			//se trova un errore me lo stampa nella console
-			System.out.println("Error:" + e.getMessage());
-		}
-	}
 	
 	//inizializzo una stringa con il nome della tabella del database
 	private static final String TABLE_NAME = "Graduatoria";
@@ -32,14 +20,14 @@ public class Graduatoria {
 	//prepara la connessione, se riesce ad accedere allora rimara aperta
 	public synchronized void openConnection () throws SQLException{
 		try {
-			connection = ds.getConnection();
+			connection = DriverManagerConnectionPool.getConnection();
 		} catch (SQLException e){
 			System.out.println("Error:" + e.getMessage());
 		}
 	}
 	//chiudera la connessione con la disconnessione dell'account
 	public synchronized void closeConnection () throws SQLException{
-		connection.close();
+		DriverManagerConnectionPool.releaseConnection(connection);
 	}
 	
 	public synchronized void caricaGraduatoria (GraduatoriaBean graduatoria) throws SQLException{
