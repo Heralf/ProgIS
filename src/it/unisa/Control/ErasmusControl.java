@@ -79,7 +79,7 @@ public class ErasmusControl extends HttpServlet {
 					ModuloBean modulo = new ModuloBean();
 					String email = (String)(request.getSession().getAttribute("email"));
 					GregorianCalendar gc = new GregorianCalendar();
-					modulo.setData(gc.get(Calendar.DAY_OF_MONTH)+"/"+gc.get(Calendar.MONTH)+"/"+gc.get(Calendar.YEAR));
+					modulo.setData(gc.get(Calendar.DAY_OF_MONTH)+"/"+gc.get(Calendar.MONTH)+1+"/"+gc.get(Calendar.YEAR));
 					modulo.setDestinazione1(request.getParameter("destinazione1"));
 					modulo.setDestinazione2(request.getParameter("destinazione2"));
 					modulo.setDestinazione3(request.getParameter("destinazione3"));
@@ -212,23 +212,12 @@ public class ErasmusControl extends HttpServlet {
 					//reindirizzamento pagina
 				}
 			}
-			try{
 				if(request.getSession().getAttribute("id")!=null){
 					int IDProprietario = (int) request.getSession().getAttribute("id");
 					Collection<MessaggioBean> messaggi = modelMes.prendiMessaggi(IDProprietario);
 					request.setAttribute("messaggi", messaggi);
 				}
 				dispatcher.forward(request, response);
-			} catch (IllegalStateException e){
-				String link = request.getParameter("page");
-				if(link!=null)
-					dispatcher = getServletContext().getRequestDispatcher(link);
-				else if((Boolean)(request.getSession().getAttribute("admin")))
-						dispatcher = getServletContext().getRequestDispatcher("/homeImpiegato.jsp");
-					else
-						dispatcher = getServletContext().getRequestDispatcher("/homeStudenti.jsp");
-				dispatcher.forward(request, response);
-			}
 		} catch (SQLException e) {
 			System.out.println("Error:" + e.getMessage());
 		}
