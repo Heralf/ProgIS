@@ -72,7 +72,7 @@
   					<form action="control" method="post">
   						<input name="idModulo" value="<%= modulo.getID() %>" style="visibility:hidden;">
   						<p id="inputEtichetta"> Codice Carta Identit&agrave;: <br>
-  						<input id="inserisciTesto" type="text" name="CartaIdentita" required> <br>  									
+  						<input id="inserisciTesto" type="text" name="CartaIdentita" maxlength="9" required> <br>  									
    			  			<button id="tastoCompilaDomanda2" type="submit" name="action" value="inviaAccettazione"> 
    			  				<i class="fa fa-paper-plane" style="font-size:23px; color:#2ecc71; margin-right:3px; margin-left:4px; 
    			  				   margin-bottom:1px; vertical-align:middle;" aria-hidden="true"> </i> Invia     	
