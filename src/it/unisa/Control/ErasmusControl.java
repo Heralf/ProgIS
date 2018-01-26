@@ -251,7 +251,7 @@ public class ErasmusControl extends HttpServlet {
 				moduli.add((ModuloBean)moduliIt.next());
 			}		
 		}
-		for(i=0;i<moduli.size();i++){
+		for(i=0;moduli!=null&&i<moduli.size();i++){
 			if(moduli.get(i).getInviaModulo())
 				request.setAttribute("inviato", true);
 		}
@@ -297,7 +297,7 @@ public class ErasmusControl extends HttpServlet {
 					moduli = new ArrayList <ModuloBean>();
 				moduli.add((ModuloBean)moduliIt.next());
 			}		
-			for(i=0;i<moduli.size();i++){
+			for(i=0;moduli!=null&&i<moduli.size();i++){
 				if(moduli.get(i).getInviaModulo())
 					inviato = true;
 			}
