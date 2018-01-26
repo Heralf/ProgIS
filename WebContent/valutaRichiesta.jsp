@@ -60,13 +60,16 @@
   						<p id="inputEtichetta"> Data Colloquio:	
   						<input id="inserisciTesto" type="date" name="dataColloquio" required>
   						<input type="text" name="idModulo" value="<%= modulo.getID() %>" style="visibility:hidden;">
-  						<button id="tastoRespingi" type="submit" name="action" value="rifiutoModulo"> 
-  							<i class="fa fa-thumbs-down" style="font-size:25.5px; color:red; margin-right:1px; margin-left:4px; 
-  							   margin-bottom:2.5px; vertical-align:middle;" aria-hidden="true"> </i> Respingi
-     					</button>						
-     					<button id="tastoRespingi1" type="submit" name="action" value="confermaModulo"> 
+  						<button id="tastoRespingi1" type="submit" name="action" value="confermaModulo"> 
      						<i class="fa fa-thumbs-up" style="font-size:25.5px; color:#2ecc71; margin-right:1px; margin-left:4px; 
      						   margin-bottom:2.5px; vertical-align:middle;" aria-hidden="true"> </i> Accetta
+     					</button>
+     				</form>	
+     				<form action="control" method="post">				
+     					<input type="text" name="idModulo" value="<%= modulo.getID() %>" style="visibility:hidden;">
+     					<button id="tastoRespingi" type="submit" name="action" value="rifiutoModulo"> 
+  							<i class="fa fa-thumbs-down" style="font-size:25.5px; color:red; margin-right:1px; margin-left:4px; 
+  							   margin-bottom:2.5px; vertical-align:middle;" aria-hidden="true"> </i> Respingi
      					</button>
      				</form>
 				</div>
