@@ -65,7 +65,6 @@ public class Account{
 		AccountBean account = new AccountBean();
 		String selectSQL = "SELECT * FROM " + Account.TABLE_NAME + " WHERE ID = ? ";
 		try {
-			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			preparedStatement.setInt(1, ID);
 			ResultSet rs = preparedStatement.executeQuery();
