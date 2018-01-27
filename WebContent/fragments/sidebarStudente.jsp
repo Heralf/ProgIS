@@ -32,9 +32,8 @@
 				<i class="fa fa-sign-in" style="font-size:28px; color:#FF6633; margin-right:3px; margin-left:5px; vertical-align: middle;" 
 				   aria-hidden="true"> </i> Esci
      		</button>
-     	</a>
-        <ul>
-    		<li id="LeftText"> 
+     	</a> 
+        <ul><li id="LeftText"> 
 				<i class="fa fa-home" style="font-size:26.5px; color:red; margin-top:-5px; margin-right:3px; margin-left:4.5px; 
 				   vertical-align:middle;" aria-hidden="true"> </i> 
 				<a href="control?action=redirect&page=/homeStudenti.jsp"> Home </a> 
