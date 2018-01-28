@@ -35,15 +35,15 @@
 		<form method="post" action="control" enctype="multipart/form-data">
             <table border="0">
                 <tr>
-                    <td"> <label  id ="pulsanteCarica"> <i class="fa fa-cloud-upload" style="font-size:26px; color:#2ecc71; margin-top:-5px; margin-right:2px; 
+                    <td> <label  id ="pulsanteCarica"> <i class="fa fa-cloud-upload" style="font-size:26px; color:#2ecc71; margin-top:-5px; margin-right:2px; 
 				   vertical-align:middle;" aria-hidden="true"></i>
-                    Carica file <input type="file" name="photo" required/></label>
+                    Carica file <input type="file" name="data" required /></label>
                     </td> 
                 </tr>
                 <br>
                 <tr>
                     <td colspan="2">
-                        <button  id ="pulsantePubblica" type="submit" name="action" value="Pubblica"> <i class="fa fa-share-alt" style="font-size:26px; color:#3399FF; margin-top:-5px; margin-right:4px; 
+                        <button  id ="pulsantePubblica" type="submit" name="action" value="caricaGraduatoria"> <i class="fa fa-share-alt" style="font-size:26px; color:#3399FF; margin-top:-5px; margin-right:4px; 
 				   vertical-align:middle;" aria-hidden="true"> </i> Pubblica </button>
                     </td>
                 </tr>
