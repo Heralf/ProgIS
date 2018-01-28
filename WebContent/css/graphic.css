@@ -38,6 +38,58 @@ body{
 	height: auto;
 }
 
+#pulsanteCarica{
+	height:45px;
+	width:140px;
+	
+	padding: 12px;
+	padding-left: 7px;
+	padding-right: 8px;
+	margin-left:32px;
+	margin-top:25px;
+	margin-bottom:5px;
+	box-shadow:1px  1px 3px #2ecc71;
+	transition:all 0.35s ease 0s;
+	background:white;
+	border:0px;
+	font-weight:light;
+	font-size:large;
+	color:black;
+	border-radius:2px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+#pulsanteCarica:hover{
+	box-shadow:1px  1px 10px #2ecc71;
+}
+
+#pulsantePubblica{
+	height:45px;
+	width:140px;
+	padding-left: 4px;
+	padding-top: 3px;
+	margin-left:30px;
+	margin-top:15px;
+	margin-bottom:5px;
+	box-shadow:1px  1px 3px #3399FF;
+	transition:all 0.35s ease 0s;
+	background:white;
+	border:0px;
+	font-weight:light;
+	font-size:large;
+	color:black;
+	border-radius:2px;
+}
+
+#pulsantePubblica:hover{
+	box-shadow:1px  1px 10px #3399FF;
+}
+
+
+
 #suggerimento{
 	margin-left:24px;
 	margin-top:2px;
