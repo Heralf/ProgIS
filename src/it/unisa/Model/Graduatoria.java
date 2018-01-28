@@ -12,7 +12,6 @@ import javax.sql.DataSource;
 import it.unisa.DriverManagerConnectionPool;
 
 public class Graduatoria {
-	private static DataSource ds;
 	
 	//inizializzo una stringa con il nome della tabella del database
 	private static final String TABLE_NAME = "Graduatoria";
@@ -32,11 +31,13 @@ public class Graduatoria {
 	
 	public synchronized void caricaGraduatoria (GraduatoriaBean graduatoria) throws SQLException{
 		PreparedStatement preparedStatement = null;
-		String inserisciSQL = "INSERT INTO " + Graduatoria.TABLE_NAME + " (Graduatoria,GraduatoriaPubblica) VALUES (?,?)";
+		String inserisciSQL = "INSERT INTO graduatoria (nomegrad, tipograd, pesograd, graduatoria) values (?,?,?,?,?)";
 		try{
 			preparedStatement=connection.prepareStatement(inserisciSQL);
-			preparedStatement.setLong(1, graduatoria.getGraduatoria());
-			preparedStatement.setBoolean(2, graduatoria.getGraduatoriaPubblica());
+			preparedStatement.setString(1, graduatoria.getNomeGrad());
+			preparedStatement.setString(2, graduatoria.getTipoGrad());
+			preparedStatement.setLong(3, graduatoria.getPesoGrad());
+			preparedStatement.setBlob(4, graduatoria.getGraduatoria());
 			preparedStatement.executeUpdate();
 		}finally{
 			if (preparedStatement != null)
@@ -44,49 +45,33 @@ public class Graduatoria {
 		}
 	}
 	
-	public synchronized GraduatoriaBean scaricaGraduatoria () throws SQLException{
+	public synchronized boolean controlloGraduatoria () throws SQLException{
 		PreparedStatement preparedStatement = null;
-		String selezioneSQL = "SELECT GRADUATORIA FROM " + Graduatoria.TABLE_NAME;
-		GraduatoriaBean graduatoria = new GraduatoriaBean();
-		try{
-			preparedStatement=connection.prepareStatement(selezioneSQL);
-			ResultSet rs = preparedStatement.executeQuery();
-			graduatoria.setGraduatoria(rs.getLong("GRADUATORIA"));
-		}finally{
-			if (preparedStatement != null)
-				preparedStatement.close();
-		}
-		return graduatoria;
-	}
-	
-	public synchronized void cancellaGraduatoria () throws SQLException{
-		PreparedStatement preparedStatement = null;
-		String selezioneSQL = "DELETTE FROM " + Graduatoria.TABLE_NAME + " WHERE ID = 1";
-		try{
-			preparedStatement=connection.prepareStatement(selezioneSQL);
-			preparedStatement.executeUpdate();
-		}finally{
-			if (preparedStatement != null)
-				preparedStatement.close();
-		}
-	}
-	
-	public synchronized GraduatoriaBean controlloGraduatoria () throws SQLException{
-		PreparedStatement preparedStatement = null;
-		GraduatoriaBean graduatoria = new GraduatoriaBean();
+		Boolean graduatoria=false;
 		String selezioneSQL = "SELECT * FROM " + Graduatoria.TABLE_NAME + " WHERE ID = 1";
 		try{
 			preparedStatement=connection.prepareStatement(selezioneSQL);
 			ResultSet rs = preparedStatement.executeQuery();
 			if(rs.next()){
-				graduatoria.setGraduatoriaPubblica(rs.getBoolean("GRADUATORIAPUBBLICA"));
-				graduatoria.setID(rs.getInt("id"));
+				graduatoria=true;
 			}
 		}finally{
 			if (preparedStatement != null)
 				preparedStatement.close();
 		}
 		return graduatoria;
+	}
+	
+	public synchronized void eliminaGraduatoria () throws SQLException{
+		PreparedStatement preparedStatement = null;
+		String aggiornaSQL = "DELETE FROM "+ Graduatoria.TABLE_NAME + " WHERE ID = 1";
+		try{
+			preparedStatement = connection.prepareStatement(aggiornaSQL);
+			preparedStatement.executeUpdate();
+		}finally{
+			if (preparedStatement != null)
+				preparedStatement.close();
+		}
 	}
 	
 	Connection connection = null;
