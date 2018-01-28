@@ -31,7 +31,7 @@ public class Graduatoria {
 	
 	public synchronized void caricaGraduatoria (GraduatoriaBean graduatoria) throws SQLException{
 		PreparedStatement preparedStatement = null;
-		String inserisciSQL = "INSERT INTO graduatoria (nomegrad, tipograd, pesograd, graduatoria) values (?,?,?,?,?)";
+		String inserisciSQL = "INSERT INTO graduatoria (nomegrad, tipograd, pesograd, graduatoria) values (?,?,?,?)";
 		try{
 			preparedStatement=connection.prepareStatement(inserisciSQL);
 			preparedStatement.setString(1, graduatoria.getNomeGrad());
