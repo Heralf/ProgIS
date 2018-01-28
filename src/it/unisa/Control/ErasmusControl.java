@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.*;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +17,7 @@ import javax.servlet.http.Part;
 import it.unisa.DriverManagerConnectionPool;
 import it.unisa.Model.*;
 
+@MultipartConfig
 public class ErasmusControl extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
@@ -354,7 +356,7 @@ public class ErasmusControl extends HttpServlet {
 		InputStream inputStream = null; // input stream of the upload file
         
         // obtains the upload file part in this multipart request
-        Part filePart = request.getPart("photo");
+        Part filePart = request.getPart("data");
         if (filePart != null) {      
             // obtains input stream of the upload file
             inputStream = filePart.getInputStream();
