@@ -22,9 +22,7 @@
 					dove sar&agrave; possibile scegliere il file da caricare, scegli il file corretto e clicca sul tasto 
 					&quot;Pubblica&quot; per pubblicare la graduatoria e renderla visibile a tutti. 
 					<br> <br> 
-					<div id="nomeFile"> 
-						GraduatorieErasmus2017/2018.pdf 
-					</div> 
+					
 				<!--	<form action="control" method="post" enctype="multipart/form-data">
 						<input id="tastoCarica" type="file" name="graduatoria">
  					 	<i class="fa fa-cloud-upload" style="font-size:24px; color:#FF6633; margin-right:3px; margin-left:4px; 
@@ -33,24 +31,20 @@
 							<i class="fa fa-share-alt" style="font-size:24px; color:#3399FF; margin-right:3px; margin-left:4px; 
 							   margin-bottom:3px; vertical-align:middle;" aria-hidden="true"> </i> Pubblica
 					</form>-->		
-					
+					 <br>
 		<form method="post" action="control" enctype="multipart/form-data">
             <table border="0">
                 <tr>
-                    <td>First Name: </td>
-                    <td><input type="text" name="firstName" size="50"/></td>
+                    <td"> <label  id ="pulsanteCarica"> <i class="fa fa-cloud-upload" style="font-size:26px; color:#2ecc71; margin-top:-5px; margin-right:2px; 
+				   vertical-align:middle;" aria-hidden="true"></i>
+                    Carica file <input type="file" name="photo" required/></label>
+                    </td> 
                 </tr>
-                <tr>
-                    <td>Last Name: </td>
-                    <td><input type="text" name="lastName" size="50"/></td>
-                </tr>
-                <tr>
-                    <td>Portrait Photo: </td>
-                    <td><input type="file" name="photo" size="50"/></td>
-                </tr>
+                <br>
                 <tr>
                     <td colspan="2">
-                        <input type="submit" name="action" value="caricaGraduatoria">
+                        <button  id ="pulsantePubblica" type="submit" name="action" value="Pubblica"> <i class="fa fa-share-alt" style="font-size:26px; color:#3399FF; margin-top:-5px; margin-right:4px; 
+				   vertical-align:middle;" aria-hidden="true"> </i> Pubblica </button>
                     </td>
                 </tr>
             </table>
