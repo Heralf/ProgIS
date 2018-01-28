@@ -204,7 +204,14 @@ public class ErasmusControl extends HttpServlet {
 				}else if(action.equalsIgnoreCase("caricaListaAccettazioneAdmin")){
 					dispatcher = caricaModuliAccettazioneAdmin(request,response,dispatcher);
 /*GradComand*/  }else if (action.equalsIgnoreCase("caricaGraduatoria")){
+					Boolean caricato = modelGra.controlloGraduatoria();
+					if(caricato)
+						modelGra.eliminaGraduatoria();
 					caricamentoFile(request,response);
+					request.setAttribute("caricato", caricato);
+					dispatcher = getServletContext().getRequestDispatcher("/pubblicaGraduatorie.jsp");
+				}else if(action.equalsIgnoreCase("publicaGraduatoria")){
+					request.setAttribute("caricato", modelGra.controlloGraduatoria());
 					dispatcher = getServletContext().getRequestDispatcher("/pubblicaGraduatorie.jsp");
 				}
 			}
@@ -343,7 +350,7 @@ public class ErasmusControl extends HttpServlet {
 		return contaModuli;
 	}
 	
-	private void caricamentoFile(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+	private void caricamentoFile(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, SQLException {
 		InputStream inputStream = null; // input stream of the upload file
         
         // obtains the upload file part in this multipart request
@@ -352,41 +359,12 @@ public class ErasmusControl extends HttpServlet {
             // obtains input stream of the upload file
             inputStream = filePart.getInputStream();
         }
-         
-        Connection conn = null; // connection to the database
-        String message = null;  // message will be sent back to client
-         
-        try {
-            // connects to the database
-            conn = DriverManagerConnectionPool.getConnection();
- 
-            // constructs SQL statement
-            String sql = "INSERT INTO graduatoria (nomegrad, tipograd, pesograd, graduatoria, graduatoriapubblica) values (?,?,?,?,?)";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, filePart.getSubmittedFileName());
-            statement.setString(2, filePart.getContentType());
-            statement.setLong(3,filePart.getSize());
-            statement.setBlob(4, inputStream);
-            statement.setBoolean(5, true);
-
-            // sends the statement to the database server
-            int row = statement.executeUpdate();
-            if (row > 0) {
-                message = "File uploaded and saved into database";
-            }
-        } catch (SQLException ex) {
-            message = "ERROR: " + ex.getMessage();
-            ex.printStackTrace();
-        } finally {
-            if (conn != null) {
-                // closes the database connection
-                try {
-                    conn.close();
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
-            }
-        }
+        GraduatoriaBean grad = new GraduatoriaBean();
+        grad.setNomeGrad(filePart.getSubmittedFileName());
+        grad.setTipoGrad(filePart.getContentType());
+        grad.setPesoGrad(filePart.getSize());
+        grad.setGraduatoria(inputStream);
+        modelGra.caricaGraduatoria(grad);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
