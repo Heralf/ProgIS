@@ -60,6 +60,9 @@ DROP TABLE IF EXISTS Graduatoria;
 
 CREATE TABLE Graduatoria (	
   ID int primary key AUTO_INCREMENT,
+  NomeGrad char(50),
+  TipoGrad char(40),
+  PesoGrad long,
   Graduatoria longblob NOT NULL,
   GraduatoriaPubblica boolean
 );
