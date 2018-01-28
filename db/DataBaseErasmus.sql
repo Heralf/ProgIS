@@ -64,7 +64,6 @@ CREATE TABLE Graduatoria (
   TipoGrad char(40),
   PesoGrad long,
   Graduatoria longblob NOT NULL,
-  GraduatoriaPubblica boolean
 );
 
 DROP TABLE IF EXISTS Messaggio;
