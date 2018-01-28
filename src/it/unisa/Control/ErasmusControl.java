@@ -210,7 +210,7 @@ public class ErasmusControl extends HttpServlet {
 					caricamentoFile(request,response);
 					request.setAttribute("caricato", caricato);
 					dispatcher = getServletContext().getRequestDispatcher("/pubblicaGraduatorie.jsp");
-				}else if(action.equalsIgnoreCase("publicaGraduatoria")){
+				}else if(action.equalsIgnoreCase("pubblicaGraduatoria")){
 					request.setAttribute("caricato", modelGra.controlloGraduatoria());
 					dispatcher = getServletContext().getRequestDispatcher("/pubblicaGraduatorie.jsp");
 				}
