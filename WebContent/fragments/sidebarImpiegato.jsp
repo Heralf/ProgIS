@@ -6,7 +6,7 @@
 		<a href="homeImpiegati.jsp"> <img id="logo" src="immagini/logo.png" alt="Mia Immagine" height="100"> </a>
 		<div id="benvenuto"> Benvenuto <br> <%= (String)request.getSession().getAttribute("nome") %> 
 			<button id="tastoMessaggi"  onclick="myFunction()" style ="margin-left:0px;"> 
-				<i class="fa fa-envelope" style="font-size:34px; color:#BA68C8; margin-top:-6px; vertical-align:middle;"> </i> 
+				<i class="fa fa-envelope" style="font-size:37px; color:#34495e; margin-top:-6px; vertical-align:middle;"> </i> 
 			</button>  			
 		</div>
 		<div id="boxMessaggi" style="display:none">
@@ -40,15 +40,15 @@
 				<a href="control?action=redirect&page=/pubblicaGraduatorie.jsp"> Pubblica graduatorie </a> 
 			</li>  	
 		</ul> 			
- 		<p id="suggerimento"> Gestisci Grandezza Caratteri
+ 		<p id="suggerimento"> Gestisci grandezza caratteri
  		<button id="tastoModificaFont" onclick="modificaTestoLittle()"> 
- 			<i class="fa fa-font" style="font-size:20px; color:black; vertical-align: middle;"> </i> 
+ 			<i class="fa fa-font" style="font-size:18px; color:black; vertical-align: middle;"> </i> 
  		</button>
  		<button id="tastoModificaFont" onclick="modificaTestoMiddle()"> 
- 			<i class="fa fa-font" style="font-size:25px; color:black; margin-top:-5px; vertical-align:middle;"> </i> 
+ 			<i class="fa fa-font" style="font-size:23px; color:black; margin-top:-5px; vertical-align:middle;"> </i> 
  		</button>
  		<button id="tastoModificaFont" onclick="modificaTestoBig()"> 
- 			<i class="fa fa-font" style="font-size:30px; color:black; margin-top:-10px; vertical-align:middle;"> </i> 
+ 			<i class="fa fa-font" style="font-size:28px; color:black; margin-top:-10px; vertical-align:middle;"> </i> 
  		</button>
  	</div>
  	</div>			
@@ -58,7 +58,7 @@
 		</a>  
  	<div id="benvenuto"> Benvenuto <br> <%= (String)request.getSession().getAttribute("nome") %> 
 		<button id="tastoMessaggi" onclick="myFunction()"> 
-			<i class="fa fa-envelope" style="font-size:34px; color:#BA68C8; margin-top:-6px; vertical-align:middle;"> </i> 
+			<i class="fa fa-envelope" style="font-size:37px; color:#34495e; margin-top:-6px; vertical-align:middle;"> </i> 
 		</button>  
 	</div>
 	<div id="boxMessaggi1" style="display:none">
@@ -90,16 +90,16 @@
 		       vertical-align:middle;" aria-hidden="true"> </i> 
 		    <a href="control?action=redirect&page=/pubblicaGraduatorie.jsp" > Pubblica graduatorie </a> 
 		</li>  
-		<p id="suggerimento1"> Gestisci Grandezza Caratteri
+		<p id="suggerimento1"> Gestisci grandezza caratteri
 		<br>
  		<button id="tastoModificaFont1" onclick="modificaTestoLittle()"> 
- 			<i class="fa fa-font" style="font-size:20px; color:black; vertical-align:middle;"> </i> 
+ 			<i class="fa fa-font" style="font-size:18px; color:black; vertical-align:middle;"> </i> 
  		</button>
  		<button id="tastoModificaFont1" onclick="modificaTestoMiddle()"> 
- 			<i class="fa fa-font" style="font-size:25px; color:black; margin-top:-5px; vertical-align:middle;"> </i> 
+ 			<i class="fa fa-font" style="font-size:23px; color:black; margin-top:-5px; vertical-align:middle;"> </i> 
  		</button>
  		<button id="tastoModificaFont1" onclick="modificaTestoBig()"> 
- 			<i class="fa fa-font" style="font-size:30px; color:black; margin-top:-10px; vertical-align:middle;"> </i> 
+ 			<i class="fa fa-font" style="font-size:28px; color:black; margin-top:-10px; vertical-align:middle;"> </i> 
  		</button> 
 	</div>
 	<script type="text/javascript">
@@ -120,16 +120,22 @@
 		
 		function modificaTestoBig(){
 			var h = document.getElementById("corpo");
-			h.style.fontSize = "14pt";
+			var r = document.getElementById("messaggio")
+			h.style.fontSize = "13pt";
+			r.style.fontSize = "13pt";
 		}
 		
 		function modificaTestoMiddle(){
 			var h = document.getElementById("corpo");
-			h.style.fontSize = "12pt";
+			var r = document.getElementById("messaggio")
+			h.style.fontSize = "11.5pt";
+			r.style.fontSize = "11.5pt";
 		}
 		
 		function modificaTestoLittle(){
 			var h = document.getElementById("corpo");
+			var r = document.getElementById("messaggio")
 			h.style.fontSize = "10pt";
+			r.style.fontSize = "10pt";
 		}
 	</script>

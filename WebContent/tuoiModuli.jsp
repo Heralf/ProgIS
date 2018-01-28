@@ -35,7 +35,7 @@
 		<%@ include file="fragments/sidebarStudente.jsp" %>
 		<div id="corpo">
 			<div id="titolo">	
-				Le tue richieste Erasmus
+				I tuoi moduli
 			</div>
 			<div id="contenuto">
 				<% if(moduli==null){ %>
@@ -82,13 +82,23 @@
 					<br> <br>
 					Scegli questo Erasmus? 
 					<br> <br>
-					Clicca su &quot;compila&quot; e compila il modulo. 
+					Clicca su &quot;compila&quot; e compila il modulo.
+					 
+					 <% if(moduli.get(i).getInviaModulo()) { %>  
+						<button id="tastoModuli4" onclick="location.href='control?action=caricaModulo&idModulo=<%= moduli.get(i).getID() %>&page=/compilaModulo.jsp'" <% if(moduli.get(i).getInviaModulo()) { %> disabled=”disabled” <% } %> 
+					        <% if(disabilita){ %> disabled=”disabled” <% } %> > <!-- Se non è stato ancora fatto il colloquio questo tasto è disattivato -->
+					        <i class="fa fa-pencil" style="font-size:24.5px; color:white; margin-right:3px; margin-left:4px; 
+					           margin-bottom:3px; vertical-align:middle;" aria-hidden="true"> </i> Compilato
+     					</button>	
+					<% } %> 
+					<% if(!moduli.get(i).getInviaModulo()) { %>
 					<button id="tastoModuli1" onclick="location.href='control?action=caricaModulo&idModulo=<%= moduli.get(i).getID() %>&page=/compilaModulo.jsp'" <% if(moduli.get(i).getInviaModulo()) { %> disabled=”disabled” <% } %> 
-					        <% if(disabilita){ %> disabled=”disabled” <% } %> > 
+					        <% if(disabilita){ %> disabled=”disabled” <% } %> > <!-- Se non è stato ancora fatto il colloquio questo tasto è disattivato -->
 					        <i class="fa fa-pencil" style="font-size:24.5px; color:#FF6633; margin-right:3px; margin-left:4px; 
 					           margin-bottom:3px; vertical-align:middle;" aria-hidden="true"> </i> Compila
      				</button>	
-     			</div>
+     				<% } %>
+     			</div> 
      		<% } %>
 			</div>
 		<% }%>

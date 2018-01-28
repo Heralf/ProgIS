@@ -18,7 +18,7 @@
 		<a href="homeStudenti.jsp"> <img id="logo" src="immagini/logo.png"  height="100"> </a>
 		<div id="benvenuto"> Benvenuto <br> <%= (String)request.getSession().getAttribute("nome") %>
 			<button id="tastoMessaggi" onclick="myFunction()"> 
-				<i class="fa fa-envelope" style="font-size:34px; color:#BA68C8; margin-top:-6px; vertical-align:middle;"> </i> 
+				<i class="fa fa-envelope" style="font-size:37px; color: #34495e; margin-top:-6px; vertical-align:middle;"> </i> 
 			</button>  
 		</div>
 		<div id="boxMessaggi" style="display:none">
@@ -39,12 +39,12 @@
 				<a href="control?action=redirect&page=/homeStudenti.jsp"> Home </a> 
 			</li>
 			<li id="LeftText"> 
-				<i class="fa fa-puzzle-piece" style="font-size:26.5px; color:#FF6633; margin-top:-5px; margin-right:2.5px; 
+				<i class="fa fa-file-text-o" style="font-size:24px; color:#FF6633; margin-top:-5px; margin-right:2.5px; 
 				   margin-left:5px; vertical-align:middle;" aria-hidden="true"></i> 
 				<a href="control?action=caricaListaModuliUtente"> Le tue richieste Erasmus </a> 
 			</li>
 			<li id="LeftText"> 
-				<i class="fa fa-file-text" style="font-size:23.5px; color:#00BCD4; margin-top:-5px; margin-right:7.5px; margin-left:5px;
+				<i class="fa fa-file-text" style="font-size:24px; color:#00BCD4; margin-top:-5px; margin-right:7.5px; margin-left:5px;
 				   vertical-align:middle;" aria-hidden="true"></i> 
 				<a href="control?action=caricaListaAccettazioneUtente"> I tuoi moduli </a> 
 			</li>
@@ -54,16 +54,16 @@
 				<a href="control?action=redirect&page=/graduatorie.jsp"> Controlla graduatorie </a> 
 			</li>  
 		</ul> 	
-		<p id="suggerimento"> Gestisci Grandezza Caratteri
+		<p id="suggerimento"> Gestisci grandezza caratteri
 		<br>
  		<button id="tastoModificaFont" onclick="modificaTestoLittle()"> 
- 			<i class="fa fa-font" style="font-size:20px; color:black; vertical-align:middle;"> </i> 
+ 			<i class="fa fa-font" style="font-size:15px; color:black; vertical-align:middle;"> </i> 
  		</button>
  		<button id="tastoModificaFont" onclick="modificaTestoMiddle()"> 
- 			<i class="fa fa-font" style="font-size:25px; color:black; margin-top:-5px; vertical-align:middle;"> </i> 
+ 			<i class="fa fa-font" style="font-size:21px; color:black; margin-top:-5px; vertical-align:middle;"> </i> 
  		</button>
  		<button id="tastoModificaFont" onclick="modificaTestoBig()"> 
- 			<i class="fa fa-font" style="font-size:30px; color:black; margin-top:-10px; vertical-align:middle;"> </i> 
+ 			<i class="fa fa-font" style="font-size:27px; color:black; margin-top:-10px; vertical-align:middle;"> </i> 
  		</button>		
  	</div>
 	<div id="rigaCentrale">	
@@ -72,7 +72,7 @@
 		</a>
 		<div id="benvenuto"> Benvenuto <br> <%= (String)request.getSession().getAttribute("nome") %>
 				<button id="tastoMessaggi" onclick="myFunction()"> 
-					<i class="fa fa-envelope" style="font-size:34px; color:#BA68C8; margin-top:-6px; vertical-align:middle;"> </i> 
+					<i class="fa fa-envelope" style="font-size:37px; color:#34495e; margin-top:-6px; vertical-align:middle;"> </i> 
 				</button>  
 		</div>
 		<div id="boxMessaggi1" style= "display:none">
@@ -93,7 +93,7 @@
 			<a href="control?action=redirect&page=/homeStudenti.jsp"> Home</a>
 		</li>
 		<li id="OrizText"> 
-			<i class="fa fa-puzzle-piece" style="font-size:26.5px; color:#FF6633; margin-top:-3px; margin-right:3px; margin-left:5px;
+			<i class="fa fa-file-text-o" style="font-size:24px; color:#FF6633; margin-top:-3px; margin-right:3px; margin-left:5px;
 			   vertical-align:middle;" aria-hidden="true"> </i> 
 			<a href="control?action=caricaListaModuliUtente">Le tue richieste Erasmus</a> 
 		</li>
@@ -107,16 +107,16 @@
 			vertical-align:middle;" aria-hidden="true"> </i> 
 			<a href="control?action=redirect&page=/graduatorie.jsp"> Controlla graduatorie </a> 
 		</li> 
-		<p id="suggerimento1"> Gestisci Grandezza Caratteri
+		<p id="suggerimento1"> Gestisci grandezza caratteri
 		<br>
  		<button id="tastoModificaFont1" onclick="modificaTestoLittle()"> 
- 			<i class="fa fa-font" style="font-size: 20px; color:black; vertical-align:middle;"> </i> 
+ 			<i class="fa fa-font" style="font-size: 17px; color:black; vertical-align:middle;"> </i> 
  		</button>
  		<button id="tastoModificaFont1" onclick="modificaTestoMiddle()"> 
- 			<i class="fa fa-font" style="font-size:25px; color:black; margin-top:-5px; vertical-align:middle;"> </i> 
+ 			<i class="fa fa-font" style="font-size:22px; color:black; margin-top:-5px; vertical-align:middle;"> </i> 
  		</button>
  		<button id="tastoModificaFont1" onclick="modificaTestoBig()"> 
- 			<i class="fa fa-font" style="font-size:30px; color:black; margin-top:-10px; vertical-align:middle;"> </i> 
+ 			<i class="fa fa-font" style="font-size:27px; color:black; margin-top:-10px; vertical-align:middle;"> </i> 
  		</button>  
 	</div>
 	<script type="text/javascript">
@@ -138,16 +138,22 @@
 		
 		function modificaTestoBig(){
 			var h = document.getElementById("corpo");
-			h.style.fontSize = "14pt";
+			var r = document.getElementById("messaggio")
+			h.style.fontSize = "13pt";
+			r.style.fontSize = "13pt";
 		}
 		
 		function modificaTestoMiddle(){
 			var h = document.getElementById("corpo");
-			h.style.fontSize = "12pt";
+			var r = document.getElementById("messaggio")
+			h.style.fontSize = "11.5pt";
+			r.style.fontSize = "11.5pt";
 		}
 		
 		function modificaTestoLittle(){
 			var h = document.getElementById("corpo");
+			var r = document.getElementById("messaggio")
 			h.style.fontSize = "10pt";
+			r.style.fontSize = "10pt";
 		}
 	</script>

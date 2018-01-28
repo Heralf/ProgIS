@@ -53,23 +53,26 @@
 					Qui sono presenti le richieste Erasmus da te compilate e salvate, puoi modificarle e inviarle come preferisci.
 					<br> <br>
 					Desideri compilarne una nuova? 
-					<a id="linkTriste" href="control?action=compilaDomandaErasmus">
+					<a id="linkTriste" href="control?action=compilaDomandaErasmus" <% if(moduli.size()>=10){%> onClick="alert('Hai raggiunto il limite di domande Erasmus che puoi creare; potrai comunque accedere alla pagina per compilare una domanda Erasmus+ ma la domanda non potrà essere salvata. ')"<%}%>>
 						Clicca QUI
 					</a>
-					. 
+					.
 				</div>
 				<% if(inviato){ %>
 				<div id="testoRichiesteErasmus">
-					<font color="#46C646">
-						&Egrave; stata gia inviata una domanda Erasmus, potrai solo modificare, creare o cancellare le prossime 
-						richieste. 
+					<font id="popUp2">
+						&Egrave; stata gia inviata una domanda Erasmus; 
+					</font>
+					<br>
+					<font id="popUp3">
+						potrai solo creare, modificare o cancellare  le prossime richieste 
 					</font>
 				</div>
 				<% } %>
 				<% int i;
 				   for(i=0;i<moduli.size();i++){ %>		
 				<div id="boxDomanda">			
-					Compilata il: <%= moduli.get(i).getData() %> 
+					Domanda compilata il: <%= moduli.get(i).getData() %> 
 					<br> <br>			
 					Destinazioni: <%= moduli.get(i).getDestinazione1() %>,  <%= moduli.get(i).getDestinazione2() %>,  
 					<%= moduli.get(i).getDestinazione3() %>	
@@ -94,11 +97,32 @@
    	  					<i class="fa fa-paper-plane" style="font-size:23px; color:white; margin-right:3px; margin-left:4px; 
    	  					   margin-bottom:1px; vertical-align:middle;" aria-hidden="true"> </i> Inviato 
    	  				</button> 
-   	  				<% } %>  		
+
+   	  				<% } %>  
+   	  			<% if(moduli.get(i).getInviaModulo()) { %> 
+   	  			<div id="popUp"> <i class="fa fa-check-circle" style="font-size:32px; color:white; margin-right:4px; margin-left:4px; vertical-align:middle;"aria-hidden="true"></i> Domanda inviata correttamente</div>
+   		  		<% } %>
    		  		</div>    
    		  		<% } %> 	
 			</div>
 			<% } %>
 		</div>
 	</body>
+	<script type="text/javascript">
+<!--
+		
+//-->
+		function myPopUp() {
+   		 var x = document.getElementById("popUp");
+   		 
+    		if (x.style.display === "none") {
+        		x.style.display = "block";
+        		y.style.display = "block";
+    		} else {
+        		x.style.display = "none";
+        		y.style.display = "none";
+    		}	
+		} 
+		
+	</script>
 </html>

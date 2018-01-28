@@ -86,12 +86,20 @@
   					<button id="tastoCompilaDomanda1" type="submit" name="action" value="creaModulo"> 
   						<i class="fa fa-check-circle" style="font-size:26px; color:#FF6633; margin-right:3px; margin-left:4px; 
   						   margin-bottom:3px; vertical-align:middle;" aria-hidden="true"> </i> Salva
-     				</button>						
-     				<button id="tastoCompilaDomanda2" type="submit" name="action" value="inviaModulo" <% if(inviato) { %> 
-     						disabled=”disabled” <% } %>> 
+     				</button>	
+     				<% if(inviato) { %> 
+   	  				<button id="tastoCompilaDomanda3" disabled=”disabled”> 
+   	  					<i class="fa fa-paper-plane" style="font-size:23px; color:white; margin-right:3px; margin-left:4px; 
+   	  					   margin-bottom:1px; vertical-align:middle;" aria-hidden="true"> </i> Inviato 
+   	  				</button> 
+   	  				
+   	  				<% }else{ %>				
+     				<button id="tastoCompilaDomanda2" type="submit" name="action" value="inviaModulo">
      					<i class="fa fa-paper-plane" style="font-size:23px; color:#2ecc71; margin-right:3px; margin-left:4px; 
      			   	    margin-bottom:1px;vertical-align: middle;" aria-hidden="true"> </i> Invia
      				</button> 
+     				<% } %>	
+     				
     	 			<% }else{ %>
      				<input name="idModulo" value="<%= modulo.getID() %>" style="visibility:hidden;">
      		 
@@ -151,10 +159,17 @@
   						<i class="fa fa-check-circle" style="font-size:26px; color:#FF6633; margin-right:3px; margin-left:4px; 
   						   margin-bottom:3px; vertical-align:middle;" aria-hidden="true"> </i> Salva
      				</button>						
-     				<button id="tastoCompilaDomanda2" type="submit" name="action" value="AggiornaModulo" <% if(inviato) { %> 
-     					    disabled=”disabled” <% } %>> <i class="fa fa-paper-plane" style="font-size:23px; color:#2ecc71; 
-     					    margin-right:3px; margin-left:4px; margin-bottom:1px; vertical-align:middle;" aria-hidden="true"> </i> Invia
+     				<% if(inviato) { %> 
+   	  				<button id="tastoCompilaDomanda3" disabled=”disabled”> 
+   	  					<i class="fa fa-paper-plane" style="font-size:23px; color:white; margin-right:3px; margin-left:4px; 
+   	  					   margin-bottom:1px; vertical-align:middle;" aria-hidden="true"> </i> Inviato 
+   	  				</button> 
+   	  				<% }else{ %>				
+     				<button id="tastoCompilaDomanda2" type="submit" name="action" value="inviaModulo">
+     					<i class="fa fa-paper-plane" style="font-size:23px; color:#2ecc71; margin-right:3px; margin-left:4px; 
+     			   	    margin-bottom:1px;vertical-align: middle;" aria-hidden="true"> </i> Invia
      				</button> 
+     				<% } %>	
     	 			<% } %>
      			</form>
 			</div>

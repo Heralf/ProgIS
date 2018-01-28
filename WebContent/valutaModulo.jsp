@@ -56,7 +56,7 @@
   					<br>
   					<form action="control" method="post">
   						<input type="text" name="idModulo" value="<%= modulo.getID() %>" style="visibility:hidden;">
-     					<button id="tastoRespingi2" type="submit" name="action" value="confermaModulo"> 
+     					<button id="tastoRespingi2" type="submit" name="action" value="confermaModulo" > 
      						<i class="fa fa-thumbs-up" style="font-size:25.5px; color:#2ecc71; margin-right:1px; margin-left:4px; 
      						   margin-bottom:2.5px; vertical-align:middle;" aria-hidden="true"> </i> Accetta
      					</button>						
