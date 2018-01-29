@@ -286,6 +286,8 @@ public class ErasmusControl extends HttpServlet {
 			Iterator <?> moduliIt = null;
 			int i;
 			ArrayList <ModuloBean> moduli = null;
+			if(moduliColl==null)
+				return false;
 			moduliIt = moduliColl.iterator();
 			while(moduliIt.hasNext()){
 				if(moduli==null)
