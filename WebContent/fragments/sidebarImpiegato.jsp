@@ -37,7 +37,7 @@
 			<li id="LeftText"> 
 				<i class="fa fa-share-alt" style="font-size:26px; color:#3399FF; margin-top:-5px; margin-right:4px; 
 				   vertical-align:middle;" aria-hidden="true"> </i> 
-				<a href="control?action=redirect&page=/pubblicaGraduatorie.jsp"> Pubblica graduatorie </a> 
+				<a href="control?action=pubblicaGraduatoria"> Pubblica graduatorie </a> 
 			</li>  	
 		</ul> 			
  		<p id="suggerimento"> Gestisci grandezza caratteri
@@ -88,7 +88,7 @@
 		<li id="OrizText"> 
 			<i class="fa fa-share-alt" style="font-size:27px; color:#3399FF; margin-top:-4px; margin-right:3.5px; 
 		       vertical-align:middle;" aria-hidden="true"> </i> 
-		    <a href="control?action=redirect&page=/pubblicaGraduatorie.jsp" > Pubblica graduatorie </a> 
+		    <a href="control?action=pubblicaGraduatoria" > Pubblica graduatorie </a> 
 		</li>  
 		<p id="suggerimento1"> Gestisci grandezza caratteri
 		<br>
