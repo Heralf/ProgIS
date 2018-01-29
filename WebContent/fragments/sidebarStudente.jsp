@@ -15,7 +15,7 @@
 		}	
 	} %>
 	<div id="ColonnaSx">
-		<a href="homeStudenti.jsp"> <img id="logo" src="immagini/logo.png"  height="100"> </a>
+		<a href="control?action=redirect&page=/homeStudenti.jsp"> <img id="logo" src="immagini/logo.png"  height="100"> </a>
 		<div id="benvenuto"> Benvenuto <br> <%= (String)request.getSession().getAttribute("nome") %>
 			<button id="tastoMessaggi" onclick="myFunction()"> 
 				<i class="fa fa-envelope" style="font-size:37px; color: #34495e; margin-top:-6px; vertical-align:middle;"> </i> 
