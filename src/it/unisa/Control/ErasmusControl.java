@@ -340,6 +340,8 @@ public class ErasmusControl extends HttpServlet {
 					(Boolean)request.getSession().getAttribute("admin"));
 			Iterator <?> moduliIt = null;
 			ArrayList <ModuloBean> moduli = null;
+			if(moduliColl==null)
+				return true;
 			moduliIt = moduliColl.iterator();
 			while(moduliIt.hasNext()){
 				if(moduli==null)
