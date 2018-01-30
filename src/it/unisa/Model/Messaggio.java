@@ -15,7 +15,10 @@ import it.unisa.DriverManagerConnectionPool;
 public class Messaggio {
 	//inizializzo una stringa con il nome della tabella del database
 	private static final String TABLE_NAME = "Messaggio";
-	
+	/**
+	 * 
+	 * @throws SQLException
+	 */
 	//prepara la connessione, se riesce ad accedere allora rimara aperta
 	public synchronized void openConnection () throws SQLException{
 		try {
@@ -24,11 +27,19 @@ public class Messaggio {
 			System.out.println("Error:" + e.getMessage());
 		}
 	}
+	/**
+	 * 
+	 * @throws SQLException
+	 */
 	//chiudera la connessione con la disconnessione dell'account
 	public synchronized void closeConnection () throws SQLException{
 		DriverManagerConnectionPool.releaseConnection(connection);
 	}
-	
+	/**
+	 * 
+	 * @param messaggio
+	 * @throws SQLException
+	 */
 	public synchronized void creaMessaggio (MessaggioBean messaggio) throws SQLException{
 		PreparedStatement preparedStatement = null;
 		String inserisciSQL = "INSERT INTO " + Messaggio.TABLE_NAME + " (IDPROPRIETARIO, TITOLO, MESSAGGIO, VISTO) VALUES (?,?,?,?)";
@@ -44,7 +55,12 @@ public class Messaggio {
 				preparedStatement.close();
 		}
 	}
-	
+	/**
+	 * 
+	 * @param IDProprietario
+	 * @return Collection<MessaggioBean>
+	 * @throws SQLException
+	 */
 	public synchronized Collection<MessaggioBean> prendiMessaggi (int IDProprietario) throws SQLException{
 		PreparedStatement preparedStatement = null;
 		Collection<MessaggioBean> messaggi = new LinkedList<MessaggioBean>();

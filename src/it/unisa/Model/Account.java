@@ -13,7 +13,10 @@ public class Account{
 	private static DataSource ds;
 	//inizializzo una stringa con il nome della tabella del database
 	private static final String TABLE_NAME = "Account";
-	
+	/**
+	 * 
+	 * @throws SQLException
+	 */
 	//prepara la connessione, se riesce ad accedere allora rimara aperta
 	public synchronized void openConnection () throws SQLException{
 		try {
@@ -22,11 +25,20 @@ public class Account{
 			System.out.println("Error:" + e.getMessage());
 		}
 	}
+	/**
+	 * 
+	 * @throws SQLException
+	 */
 	//chiudera la connessione con la disconnessione dell'account
 	public synchronized void closeConnection () throws SQLException{
 		DriverManagerConnectionPool.releaseConnection(connection);
 	}
-	
+	/**
+	 * 
+	 * @param Email
+	 * @return AccountBean
+	 * @throws SQLException
+	 */
 	//funzione che cerca l'account tramnite email, utilizzata per entrare sul sito web
 	public synchronized AccountBean doSearchByEmail(String Email) throws SQLException{
 		PreparedStatement preparedStatement = null;
@@ -59,7 +71,12 @@ public class Account{
 		}
 		return account;
 	}
-	
+	/**
+	 * 
+	 * @param ID
+	 * @return AccountBean
+	 * @throws SQLException
+	 */
 	public synchronized AccountBean doSearchByID(int ID) throws SQLException{
 		PreparedStatement preparedStatement = null;
 		AccountBean account = new AccountBean();

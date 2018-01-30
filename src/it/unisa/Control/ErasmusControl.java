@@ -30,7 +30,12 @@ public class ErasmusControl extends HttpServlet {
 	public ErasmusControl() {
 		super();	
 	}
-
+	/**
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -228,7 +233,16 @@ public class ErasmusControl extends HttpServlet {
 		}
 		return;
 	}
-
+	/**
+	 * 
+	 * @param request
+	 * @param response
+	 * @param dispatcher
+	 * @return dispatcher(carica i moduli di domanda da parte dell'utente)
+	 * @throws SQLException
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	private RequestDispatcher caricaModuliDomandaUtente(HttpServletRequest request, HttpServletResponse response,
 			RequestDispatcher dispatcher) throws SQLException, ServletException, IOException {
 		Collection <ModuloBean> moduliColl = modelMod.caricaModuli((int)request.getSession().getAttribute("id"), true, 
@@ -253,7 +267,16 @@ public class ErasmusControl extends HttpServlet {
 		dispatcher = getServletContext().getRequestDispatcher("/tueRichiesteErasmus.jsp");
 		return dispatcher;
 	}
-	
+	/**
+	 * 
+	 * @param request
+	 * @param response
+	 * @param dispatcher
+	 * @return dispatcher(carica moduli di accettazione da parte dell'utente)
+	 * @throws SQLException
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	private RequestDispatcher caricaModuliAccettazioneUtente(HttpServletRequest request, HttpServletResponse response, 
 			RequestDispatcher dispatcher) throws SQLException, ServletException, IOException {
 		Collection <ModuloBean> moduliColl = modelMod.caricaModuli((int)request.getSession().getAttribute("id"), false, 
@@ -262,7 +285,16 @@ public class ErasmusControl extends HttpServlet {
 		dispatcher = getServletContext().getRequestDispatcher("/tuoiModuli.jsp");
 		return dispatcher;
 	}
-	
+	/**
+	 * 
+	 * @param request
+	 * @param response
+	 * @param dispatcher
+	 * @return dispatcher(carica i moduli da parte degli admin)
+	 * @throws SQLException
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	private RequestDispatcher caricaModuliDomandaAdmin(HttpServletRequest request, HttpServletResponse response, 
 			RequestDispatcher dispatcher) throws SQLException, ServletException, IOException {
 		Collection <ModuloBean> moduliColl = modelMod.caricaModuli(0, true, (Boolean)request.getSession().getAttribute("admin"));
@@ -270,14 +302,30 @@ public class ErasmusControl extends HttpServlet {
 		dispatcher = getServletContext().getRequestDispatcher("/valutaRichiesteErasmus.jsp");
 		return dispatcher;
 	}
-	
+	/**
+	 * 
+	 * @param request
+	 * @param response
+	 * @param dispatcher
+	 * @return dispatcher(carica i moduli di accettazioni da parte degli admin)
+	 * @throws SQLException
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	private RequestDispatcher caricaModuliAccettazioneAdmin(HttpServletRequest request, HttpServletResponse response,RequestDispatcher dispatcher) throws SQLException, ServletException, IOException {
 		Collection <ModuloBean> moduliColl = modelMod.caricaModuli(0, false, (Boolean)request.getSession().getAttribute("admin"));
 		request.setAttribute("moduli",moduliColl);
 		dispatcher = getServletContext().getRequestDispatcher("/valutaModuliAccettazione.jsp");
 		return dispatcher;
 	}
-	
+	/**
+	 * 
+	 * @param request
+	 * @return Boolean(controlla se un modulo e' stato gia inviato)
+	 * @throws SQLException
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	private boolean inviato(HttpServletRequest request) throws SQLException, ServletException, IOException {
 		Boolean inviato = false;
 		if(!(Boolean)request.getSession().getAttribute("admin")){
@@ -301,7 +349,15 @@ public class ErasmusControl extends HttpServlet {
 		}
 		return inviato;
 	}
-	
+	/**
+	 * 
+	 * @param modulo
+	 * @param data
+	 * @return String(insieme di destinazioni)
+	 * @throws SQLException
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	private String creaDomandeAccettazione (ModuloBean modulo,String data) throws SQLException, ServletException, IOException{
 		String destinazione;
 		modulo.setData(data);
@@ -328,13 +384,22 @@ public class ErasmusControl extends HttpServlet {
 		}
 		return destinazione;
 	}
-	
+	/**
+	 * 
+	 * @param data
+	 * @return data(invertita)
+	 */
 	private String invertiData(String data){
 		String data1 = "";
 		data1 = data.substring(8, 10)+"/"+data.substring(5, 7)+"/"+data.substring(0, 4);
 		return data1;
 	}
-	
+	/**
+	 * 
+	 * @param request
+	 * @return Boolean(quantitativo di moduli = 10)
+	 * @throws SQLException
+	 */
 	private boolean contaModuli(HttpServletRequest request) throws SQLException{
 		boolean contaModuli = true;
 		if(!(Boolean)request.getSession().getAttribute("admin")){
@@ -355,7 +420,14 @@ public class ErasmusControl extends HttpServlet {
 		}
 		return contaModuli;
 	}
-	
+	/**
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 * @throws ServletException
+	 * @throws SQLException
+	 */
 	private void caricamentoFile(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, SQLException {
 		InputStream inputStream = null; // input stream of the upload file
         
@@ -372,7 +444,9 @@ public class ErasmusControl extends HttpServlet {
         grad.setGraduatoria(inputStream);
         modelGra.caricaGraduatoria(grad);
 	}
-	
+	/**
+	 * 
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);

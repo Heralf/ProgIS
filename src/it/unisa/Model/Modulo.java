@@ -17,7 +17,10 @@ import it.unisa.Model.AccountBean;
 public class Modulo{
 	//inizializzo una stringa con il nome della tabella del database
 	private static final String TABLE_NAME = "Modulo";
-	
+	/**
+	 * 
+	 * @throws SQLException
+	 */
 	//prepara la connessione, se riesce ad accedere allora rimara aperta
 	public synchronized void openConnection () throws SQLException{
 		try {
@@ -26,11 +29,21 @@ public class Modulo{
 			System.out.println("Error:" + e.getMessage());
 		}
 	}
+	/**
+	 * 
+	 * @throws SQLException
+	 */
 	//chiudera la connessione con la disconnessione dell'account
 	public synchronized void closeConnection () throws SQLException{
 		DriverManagerConnectionPool.releaseConnection(connection);
 	}
-	
+	/**
+	 * 
+	 * @param modulo
+	 * @param domanda
+	 * @param inviato
+	 * @throws SQLException
+	 */
 	//funzione che cera un modulo di domada/accettazione
 	public synchronized void creaModulo (ModuloBean modulo, Boolean domanda, Boolean inviato) throws SQLException{
 		PreparedStatement preparedStatement = null;
@@ -76,7 +89,14 @@ public class Modulo{
 				preparedStatement.close();
 		}
 	}
-	
+	/**
+	 * 
+	 * @param idProprietario
+	 * @param domanda
+	 * @param admin
+	 * @return Collection<ModuloBean>
+	 * @throws SQLException
+	 */
 	//funzione che carica tutti i moduli
 	public synchronized Collection<ModuloBean> caricaModuli (int idProprietario, Boolean domanda, Boolean admin) throws SQLException{
 		Collection<ModuloBean> moduli = null;
@@ -133,7 +153,12 @@ public class Modulo{
 		
 		return moduli;
 	}
-	
+	/**
+	 * 
+	 * @param idModulo
+	 * @return ModuloBean
+	 * @throws SQLException
+	 */
 	//funzione che carica un modulo inserendo il suo id
 	public synchronized ModuloBean caricaModulo (int idModulo) throws SQLException{
 		ModuloBean modulo = new ModuloBean();
@@ -176,7 +201,14 @@ public class Modulo{
 		
 		return modulo;
 	}
-	
+	/**
+	 * 
+	 * @param idModulo
+	 * @param modulo
+	 * @param domanda
+	 * @param inviato
+	 * @throws SQLException
+	 */
 	public synchronized void aggiornaModulo (int idModulo, ModuloBean modulo, Boolean domanda, Boolean inviato) throws SQLException{
 		PreparedStatement preparedStatement = null;
 		String aggiornaSQL;
@@ -204,7 +236,11 @@ public class Modulo{
 				preparedStatement.close();
 		}
 	}
-	
+	/**
+	 * 
+	 * @param idModulo
+	 * @throws SQLException
+	 */
 	public synchronized void inviaModulo (int idModulo) throws SQLException{
 		PreparedStatement preparedStatement = null;
 		String aggiornaSQL = "UPDATE "+ Modulo.TABLE_NAME + " SET INVIAMODULO = ? WHERE ID = ?";
@@ -218,7 +254,11 @@ public class Modulo{
 				preparedStatement.close();
 		}
 	}
-	
+	/**
+	 * 
+	 * @param idModulo
+	 * @throws SQLException
+	 */
 	public synchronized void confermaModulo (int idModulo) throws SQLException{
 		PreparedStatement preparedStatement = null;
 		String aggiornaSQL = "UPDATE "+ Modulo.TABLE_NAME + " SET CONFERMAMODULO = ? WHERE ID = ?";
@@ -232,7 +272,11 @@ public class Modulo{
 				preparedStatement.close();
 		}
 	}
-	
+	/**
+	 * 
+	 * @param idModulo
+	 * @throws SQLException
+	 */
 	public synchronized void rifiutoModulo (int idModulo) throws SQLException{
 		PreparedStatement preparedStatement = null;
 		String aggiornaSQL = "UPDATE "+ Modulo.TABLE_NAME + " SET INVIAMODULO = ? WHERE ID = ?";
@@ -246,7 +290,11 @@ public class Modulo{
 				preparedStatement.close();
 		}
 	}
-	
+	/**
+	 * 
+	 * @param idModulo
+	 * @throws SQLException
+	 */
 	public synchronized void eliminaModulo (int idModulo) throws SQLException{
 		PreparedStatement preparedStatement = null;
 		String aggiornaSQL = "DELETE FROM "+ Modulo.TABLE_NAME + " WHERE ID = ?";
@@ -259,7 +307,13 @@ public class Modulo{
 				preparedStatement.close();
 		}
 	}
-	
+	/**
+	 * 
+	 * @param idModulo
+	 * @param data
+	 * @param CartaIdentita
+	 * @throws SQLException
+	 */
 	public synchronized void aggiungiCarta (int idModulo, String data, String CartaIdentita) throws SQLException{
 		PreparedStatement preparedStatement = null;
 		String aggiornaSQL = "UPDATE "+ Modulo.TABLE_NAME + " SET INVIAMODULO = ?, DATA = ?, CARTAIDENTITA = ? WHERE ID = ?";

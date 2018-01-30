@@ -15,7 +15,10 @@ public class Graduatoria {
 	
 	//inizializzo una stringa con il nome della tabella del database
 	private static final String TABLE_NAME = "Graduatoria";
-	
+	/**
+	 * 
+	 * @throws SQLException
+	 */
 	//prepara la connessione, se riesce ad accedere allora rimara aperta
 	public synchronized void openConnection () throws SQLException{
 		try {
@@ -24,11 +27,19 @@ public class Graduatoria {
 			System.out.println("Error:" + e.getMessage());
 		}
 	}
+	/**
+	 * 
+	 * @throws SQLException
+	 */
 	//chiudera la connessione con la disconnessione dell'account
 	public synchronized void closeConnection () throws SQLException{
 		DriverManagerConnectionPool.releaseConnection(connection);
 	}
-	
+	/**
+	 * 
+	 * @param graduatoria
+	 * @throws SQLException
+	 */
 	public synchronized void caricaGraduatoria (GraduatoriaBean graduatoria) throws SQLException{
 		PreparedStatement preparedStatement = null;
 		String inserisciSQL = "INSERT INTO graduatoria (nomegrad, tipograd, pesograd, graduatoria) values (?,?,?,?)";
@@ -44,7 +55,11 @@ public class Graduatoria {
 				preparedStatement.close();
 		}
 	}
-	
+	/**
+	 * 
+	 * @return boolean
+	 * @throws SQLException
+	 */
 	public synchronized boolean controlloGraduatoria () throws SQLException{
 		PreparedStatement preparedStatement = null;
 		Boolean graduatoria=false;
@@ -61,7 +76,10 @@ public class Graduatoria {
 		}
 		return graduatoria;
 	}
-	
+	/**
+	 * 
+	 * @throws SQLException
+	 */
 	public synchronized void eliminaGraduatoria () throws SQLException{
 		PreparedStatement preparedStatement = null;
 		String aggiornaSQL = "DELETE FROM "+ Graduatoria.TABLE_NAME + " WHERE ID = 1";
