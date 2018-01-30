@@ -38,6 +38,23 @@ body{
 	height: auto;
 }
 
+#popUp4{
+	height: auto;
+	padding-top: 7px;
+	padding-left: 5px;
+	padding-right: 7px;
+	padding-bottom:5px;
+	vertical-align: middle;
+	text-align: center;
+	width: 300px;
+	margin-top: 15px;
+	background: #E74C3C;
+	color: white;
+	font-size: 98%;
+	float: right;
+	border-radius: 200px;
+	
+}
 #pulsanteCarica{
 	height:45px;
 	width:140px;
@@ -344,7 +361,7 @@ input[type="file"] {
 	margin-left:30px;
 	padding-left:25px;
 	padding-right:25px;
-	padding-bottom:25px;
+	padding-bottom:50px;
 	margin-top:10px;
 	background:white;
 	transition:all 0.35s ease 0s;
