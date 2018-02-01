@@ -1,3 +1,6 @@
+<!--
+Sidebar utilizzata quando sul sito si logga come studente
+-->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page session="true" %>
 <%@ page contentType="text/html; charset=UTF-8" import="java.util.*, it.unisa.Model.*" %>

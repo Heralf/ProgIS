@@ -1,3 +1,6 @@
+<!--
+Pagina per lo studente; Lista completa dei moduli di accettazione si possono inviare per confermare la partecipazione
+-->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page session="true" %>
 <%@ page contentType="text/html; charset=UTF-8" import="java.util.*, it.unisa.Model.*" %>

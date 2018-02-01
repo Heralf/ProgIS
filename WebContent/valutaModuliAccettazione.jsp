@@ -1,3 +1,6 @@
+<!--
+Pagina per l'impiegato; Pagina che comprende una lista di tutti i moduli che hanno inviato gli studenti
+-->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page session="true" %>
 <%@ page contentType="text/html; charset=UTF-8" import="java.util.*, it.unisa.Model.*" %>

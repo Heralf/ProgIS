@@ -1,3 +1,6 @@
+<!--
+Pagina per lo studente; Lista di tutte le richieste create, si possono modificare, cancellare opure inviare 1 modulo
+-->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page session="true" %>
 <%@ page contentType="text/html; charset=UTF-8" import="java.util.*, it.unisa.Model.*" %>

@@ -1,3 +1,6 @@
+<!-- 
+Pagina di login, serve sia all'impiegato che sia all'utente di loggare sula piattaforma
+ -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page session="true" %>
 <%@ page contentType="text/html; charset=UTF-8" import="java.util.*" %>

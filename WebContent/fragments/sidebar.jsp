@@ -1,3 +1,6 @@
+<!--
+Sidebar utilizzata quando non si e' ancora collegati al sito di erasmus
+-->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="ISO-8859-1"%>
 
 	<div id="ColonnaSx">

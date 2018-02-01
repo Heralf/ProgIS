@@ -1,3 +1,6 @@
+<!--
+Pagina per l'impiegato; Serve a valutare le domande di accettazione inviata dallo studente
+-->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page session="true" %>
 <%@ page contentType="text/html; charset=UTF-8" import="java.util.*, it.unisa.Model.*" %>

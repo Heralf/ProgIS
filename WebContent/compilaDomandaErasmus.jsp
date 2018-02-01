@@ -1,3 +1,6 @@
+<!-- 
+Pagina per lo studente;Server per compilare la domanda Erasmus; si inseriscono massimo 3 destinazioni per partecipare all'erasmus
+-->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page session="true" %>
 <%@ page contentType="text/html; charset=UTF-8" import="java.util.*, it.unisa.Model.*" %>
