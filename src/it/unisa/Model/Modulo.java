@@ -209,6 +209,7 @@ public class Modulo{
 	 * @param inviato
 	 * @throws SQLException
 	 */
+	//funzione che aggiorna un modulo gia creato
 	public synchronized void aggiornaModulo (int idModulo, ModuloBean modulo, Boolean domanda, Boolean inviato) throws SQLException{
 		PreparedStatement preparedStatement = null;
 		String aggiornaSQL;
@@ -241,6 +242,7 @@ public class Modulo{
 	 * @param idModulo
 	 * @throws SQLException
 	 */
+	//funzione che invia un modulo selezionato
 	public synchronized void inviaModulo (int idModulo) throws SQLException{
 		PreparedStatement preparedStatement = null;
 		String aggiornaSQL = "UPDATE "+ Modulo.TABLE_NAME + " SET INVIAMODULO = ? WHERE ID = ?";
@@ -259,6 +261,7 @@ public class Modulo{
 	 * @param idModulo
 	 * @throws SQLException
 	 */
+	//funzione che imposta quel modulo come confermato dall'impiegato
 	public synchronized void confermaModulo (int idModulo) throws SQLException{
 		PreparedStatement preparedStatement = null;
 		String aggiornaSQL = "UPDATE "+ Modulo.TABLE_NAME + " SET CONFERMAMODULO = ? WHERE ID = ?";
@@ -277,6 +280,7 @@ public class Modulo{
 	 * @param idModulo
 	 * @throws SQLException
 	 */
+	//funzione che imposta quel modulo come non inviato se l'impiegato non lo accetta
 	public synchronized void rifiutoModulo (int idModulo) throws SQLException{
 		PreparedStatement preparedStatement = null;
 		String aggiornaSQL = "UPDATE "+ Modulo.TABLE_NAME + " SET INVIAMODULO = ? WHERE ID = ?";
@@ -295,6 +299,7 @@ public class Modulo{
 	 * @param idModulo
 	 * @throws SQLException
 	 */
+	//funzione che elimina un modulo tramite l'id
 	public synchronized void eliminaModulo (int idModulo) throws SQLException{
 		PreparedStatement preparedStatement = null;
 		String aggiornaSQL = "DELETE FROM "+ Modulo.TABLE_NAME + " WHERE ID = ?";
@@ -314,6 +319,7 @@ public class Modulo{
 	 * @param CartaIdentita
 	 * @throws SQLException
 	 */
+	//funzione che aggiunge la carta di identita ad un modulo e lo invia
 	public synchronized void aggiungiCarta (int idModulo, String data, String CartaIdentita) throws SQLException{
 		PreparedStatement preparedStatement = null;
 		String aggiornaSQL = "UPDATE "+ Modulo.TABLE_NAME + " SET INVIAMODULO = ?, DATA = ?, CARTAIDENTITA = ? WHERE ID = ?";

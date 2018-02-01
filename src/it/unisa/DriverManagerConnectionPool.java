@@ -23,6 +23,7 @@ public class DriverManagerConnectionPool  {
 	 * @return connection
 	 * @throws SQLException
 	 */
+	//prepara la connessione al sito web
 	private static synchronized Connection createDBConnection() throws SQLException {
 		Connection newConnection = null;
 		String ip = "localhost";
@@ -41,6 +42,7 @@ public class DriverManagerConnectionPool  {
 	 * @return connecton
 	 * @throws SQLException
 	 */
+	//ottiene la connesisone precedentemente preparata
 	public static synchronized Connection getConnection() throws SQLException {
 		Connection connection;
 
@@ -66,6 +68,7 @@ public class DriverManagerConnectionPool  {
 	 * @param connection
 	 * @throws SQLException
 	 */
+	//chiude la connessione condervandola in una lista
 	public static synchronized void releaseConnection(Connection connection) throws SQLException {
 		if(connection != null) freeDbConnections.add(connection);
 	}

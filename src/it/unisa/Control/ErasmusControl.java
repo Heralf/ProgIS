@@ -60,10 +60,12 @@ public class ErasmusControl extends HttpServlet {
 							request.getSession().setAttribute("admin", account.getAdmin());
 							request.getSession().setAttribute("email", account.getPostaElettronica());
 							request.getSession().setAttribute("id", account.getID());
-							if(account.getAdmin())
+							if(account.getAdmin()){
 								dispatcher = getServletContext().getRequestDispatcher("/homeImpiegati.jsp");
-							else
+							}
+							else{
 								dispatcher = getServletContext().getRequestDispatcher("/homeStudenti.jsp");
+							}
 						}else{
 							modelAcc.closeConnection();
 							request.setAttribute("errore",false);
@@ -97,8 +99,9 @@ public class ErasmusControl extends HttpServlet {
 					modulo.setDestinazione2(request.getParameter("destinazione2"));
 					modulo.setDestinazione3(request.getParameter("destinazione3"));
 					modulo.setAccount(modelAcc.doSearchByEmail(email));
-					if(contaModuli(request))
+					if(contaModuli(request)){
 						modelMod.creaModulo(modulo, true, false);
+					}
 					dispatcher = caricaModuliDomandaUtente(request,response,dispatcher);
 				}else if(action.equalsIgnoreCase("compilaDomandaErasmus")){
 					int ID = (int)request.getSession().getAttribute("id");
@@ -141,8 +144,9 @@ public class ErasmusControl extends HttpServlet {
 					modulo.setDestinazione2(request.getParameter("destinazione2"));
 					modulo.setDestinazione3(request.getParameter("destinazione3"));
 					modulo.setAccount(modelAcc.doSearchByEmail(email));
-					if(!inviato(request)&&contaModuli(request))
+					if(!inviato(request)&&contaModuli(request)){
 						modelMod.creaModulo(modulo, true, true);
+					}
 					dispatcher = caricaModuliDomandaUtente(request,response,dispatcher);
 				}else if(action.equals("InviaModulo")){
 					int idModulo = Integer.parseInt(request.getParameter("idModulo"));
@@ -156,7 +160,15 @@ public class ErasmusControl extends HttpServlet {
 					dispatcher = caricaModuliAccettazioneUtente(request,response,dispatcher);
 				}else if(action.equalsIgnoreCase("caricaListaModuliAdmin")){
 					dispatcher = caricaModuliDomandaAdmin(request,response,dispatcher);
-				}else if(action.equalsIgnoreCase("confermaModulo")){
+				}else if (action.equalsIgnoreCase("inviaAccettazione")){
+					GregorianCalendar gc = new GregorianCalendar();
+					int idModulo = Integer.parseInt(request.getParameter("idModulo"));
+					String data = gc.get(Calendar.DAY_OF_MONTH)+"/"+gc.get(Calendar.MONTH)+1+"/"+gc.get(Calendar.YEAR);
+					modelMod.aggiungiCarta(idModulo,data, request.getParameter("CartaIdentita"));
+					dispatcher = caricaModuliAccettazioneUtente(request,response,dispatcher);
+				}else if(action.equalsIgnoreCase("caricaListaAccettazioneAdmin")){
+					dispatcher = caricaModuliAccettazioneAdmin(request,response,dispatcher);
+/*MessComand*/ 	}else if(action.equalsIgnoreCase("confermaModulo")){
 					int idModulo = Integer.parseInt(request.getParameter("idModulo"));
 					modelMod.confermaModulo(idModulo);
 					ModuloBean modulo = modelMod.caricaModulo(idModulo);
@@ -180,10 +192,12 @@ public class ErasmusControl extends HttpServlet {
 								+"&quot; &egrave stato accettato");
 					}
 					modelMes.creaMessaggio(messaggio);
-					if(modulo.getDomanda())
+					if(modulo.getDomanda()){
 						dispatcher = caricaModuliDomandaAdmin(request,response,dispatcher);
-					else
+					}
+					else{
 						dispatcher = caricaModuliAccettazioneAdmin(request,response,dispatcher);
+					}
 				}else if(action.equalsIgnoreCase("rifiutoModulo")){
 					int idModulo = Integer.parseInt(request.getParameter("idModulo"));
 					modelMod.rifiutoModulo(idModulo);
@@ -198,22 +212,17 @@ public class ErasmusControl extends HttpServlet {
 						messaggio.setMessaggio("Il modulo da te inviato per &quot"+ modulo.getDestinazione1() +"&quot non &egrave stato accettato");
 					}
 					modelMes.creaMessaggio(messaggio);
-					if(modulo.getDomanda())
+					if(modulo.getDomanda()){
 						dispatcher = caricaModuliDomandaAdmin(request,response,dispatcher);
-					else
+					}
+					else{
 						dispatcher = caricaModuliAccettazioneAdmin(request,response,dispatcher);
-				}else if (action.equalsIgnoreCase("inviaAccettazione")){
-					GregorianCalendar gc = new GregorianCalendar();
-					int idModulo = Integer.parseInt(request.getParameter("idModulo"));
-					String data = gc.get(Calendar.DAY_OF_MONTH)+"/"+gc.get(Calendar.MONTH)+1+"/"+gc.get(Calendar.YEAR);
-					modelMod.aggiungiCarta(idModulo,data, request.getParameter("CartaIdentita"));
-					dispatcher = caricaModuliAccettazioneUtente(request,response,dispatcher);
-				}else if(action.equalsIgnoreCase("caricaListaAccettazioneAdmin")){
-					dispatcher = caricaModuliAccettazioneAdmin(request,response,dispatcher);
+					}
 /*GradComand*/  }else if (action.equalsIgnoreCase("caricaGraduatoria")){
 					Boolean caricato = modelGra.controlloGraduatoria();
-					if(caricato)
+					if(caricato){
 						modelGra.eliminaGraduatoria();
+					}
 					caricamentoFile(request,response);
 					request.setAttribute("caricato", caricato);
 					dispatcher = getServletContext().getRequestDispatcher("/pubblicaGraduatorie.jsp");
@@ -243,6 +252,7 @@ public class ErasmusControl extends HttpServlet {
 	 * @throws ServletException
 	 * @throws IOException
 	 */
+	//funzione che carica la lista delle domande per partecipare all'erasmus di un determinato utente
 	private RequestDispatcher caricaModuliDomandaUtente(HttpServletRequest request, HttpServletResponse response,
 			RequestDispatcher dispatcher) throws SQLException, ServletException, IOException {
 		Collection <ModuloBean> moduliColl = modelMod.caricaModuli((int)request.getSession().getAttribute("id"), true, 
@@ -254,14 +264,16 @@ public class ErasmusControl extends HttpServlet {
 		if (request.getAttribute("moduli")!=null){ 
 			moduliIt = moduliColl.iterator();
 			while(moduliIt.hasNext()){
-				if(moduli==null)
+				if(moduli==null){
 					moduli = new ArrayList <ModuloBean>();
+				}
 				moduli.add((ModuloBean)moduliIt.next());
 			}		
 		}
 		for(i=0;moduli!=null&&i<moduli.size();i++){
-			if(moduli.get(i).getInviaModulo())
+			if(moduli.get(i).getInviaModulo()){
 				request.setAttribute("inviato", true);
+			}
 		}
 		request.setAttribute("contaModuli",contaModuli(request));
 		dispatcher = getServletContext().getRequestDispatcher("/tueRichiesteErasmus.jsp");
@@ -277,6 +289,7 @@ public class ErasmusControl extends HttpServlet {
 	 * @throws ServletException
 	 * @throws IOException
 	 */
+	//funzione che carica la lista dei moduli di accettazione di un determinato utente
 	private RequestDispatcher caricaModuliAccettazioneUtente(HttpServletRequest request, HttpServletResponse response, 
 			RequestDispatcher dispatcher) throws SQLException, ServletException, IOException {
 		Collection <ModuloBean> moduliColl = modelMod.caricaModuli((int)request.getSession().getAttribute("id"), false, 
@@ -295,6 +308,7 @@ public class ErasmusControl extends HttpServlet {
 	 * @throws ServletException
 	 * @throws IOException
 	 */
+	//funzione che carica tutte le domande per partecipare all'erasmus
 	private RequestDispatcher caricaModuliDomandaAdmin(HttpServletRequest request, HttpServletResponse response, 
 			RequestDispatcher dispatcher) throws SQLException, ServletException, IOException {
 		Collection <ModuloBean> moduliColl = modelMod.caricaModuli(0, true, (Boolean)request.getSession().getAttribute("admin"));
@@ -312,6 +326,7 @@ public class ErasmusControl extends HttpServlet {
 	 * @throws ServletException
 	 * @throws IOException
 	 */
+	//funzione che carica tutte le domanda di accettazione
 	private RequestDispatcher caricaModuliAccettazioneAdmin(HttpServletRequest request, HttpServletResponse response,RequestDispatcher dispatcher) throws SQLException, ServletException, IOException {
 		Collection <ModuloBean> moduliColl = modelMod.caricaModuli(0, false, (Boolean)request.getSession().getAttribute("admin"));
 		request.setAttribute("moduli",moduliColl);
@@ -326,6 +341,7 @@ public class ErasmusControl extends HttpServlet {
 	 * @throws ServletException
 	 * @throws IOException
 	 */
+	//funzione che ritorna un valoore booleano ositivo se nella lista di moduli e stato gia inviato un modulo
 	private boolean inviato(HttpServletRequest request) throws SQLException, ServletException, IOException {
 		Boolean inviato = false;
 		if(!(Boolean)request.getSession().getAttribute("admin")){
@@ -334,17 +350,20 @@ public class ErasmusControl extends HttpServlet {
 			Iterator <?> moduliIt = null;
 			int i;
 			ArrayList <ModuloBean> moduli = null;
-			if(moduliColl==null)
+			if(moduliColl==null){
 				return false;
+			}
 			moduliIt = moduliColl.iterator();
 			while(moduliIt.hasNext()){
-				if(moduli==null)
+				if(moduli==null){
 					moduli = new ArrayList <ModuloBean>();
+				}
 				moduli.add((ModuloBean)moduliIt.next());
 			}		
 			for(i=0;moduli!=null&&i<moduli.size();i++){
-				if(moduli.get(i).getInviaModulo())
+				if(moduli.get(i).getInviaModulo()){
 					inviato = true;
+				}
 			}
 		}
 		return inviato;
@@ -358,6 +377,7 @@ public class ErasmusControl extends HttpServlet {
 	 * @throws ServletException
 	 * @throws IOException
 	 */
+	//funzione che crea le domande di accettazione di un determinato utente
 	private String creaDomandeAccettazione (ModuloBean modulo,String data) throws SQLException, ServletException, IOException{
 		String destinazione;
 		modulo.setData(data);
@@ -389,6 +409,7 @@ public class ErasmusControl extends HttpServlet {
 	 * @param data
 	 * @return data(invertita)
 	 */
+	//inverte la data(yyyy/mm/dd --> dd/mm/yyyy)
 	private String invertiData(String data){
 		String data1 = "";
 		data1 = data.substring(8, 10)+"/"+data.substring(5, 7)+"/"+data.substring(0, 4);
@@ -400,6 +421,7 @@ public class ErasmusControl extends HttpServlet {
 	 * @return Boolean(quantitativo di moduli = 10)
 	 * @throws SQLException
 	 */
+	//funzione che ritorna un vaolore booleano se i moduli sono + di 10
 	private boolean contaModuli(HttpServletRequest request) throws SQLException{
 		boolean contaModuli = true;
 		if(!(Boolean)request.getSession().getAttribute("admin")){
@@ -407,16 +429,19 @@ public class ErasmusControl extends HttpServlet {
 					(Boolean)request.getSession().getAttribute("admin"));
 			Iterator <?> moduliIt = null;
 			ArrayList <ModuloBean> moduli = null;
-			if(moduliColl==null)
+			if(moduliColl==null){
 				return true;
+			}
 			moduliIt = moduliColl.iterator();
 			while(moduliIt.hasNext()){
-				if(moduli==null)
+				if(moduli==null){
 					moduli = new ArrayList <ModuloBean>();
+				}
 				moduli.add((ModuloBean)moduliIt.next());
 			}		
-			if(moduli.size()==10)
+			if(moduli.size()==10){
 				contaModuli = false;
+			}
 		}
 		return contaModuli;
 	}
@@ -428,13 +453,12 @@ public class ErasmusControl extends HttpServlet {
 	 * @throws ServletException
 	 * @throws SQLException
 	 */
+	//prepara il file che dovra essere caricato nella graduatoria
 	private void caricamentoFile(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, SQLException {
-		InputStream inputStream = null; // input stream of the upload file
-        
-        // obtains the upload file part in this multipart request
+		InputStream inputStream = null;
+
         Part filePart = request.getPart("data");
-        if (filePart != null) {      
-            // obtains input stream of the upload file
+        if (filePart != null) {
             inputStream = filePart.getInputStream();
         }
         GraduatoriaBean grad = new GraduatoriaBean();
@@ -447,6 +471,7 @@ public class ErasmusControl extends HttpServlet {
 	/**
 	 * 
 	 */
+	//il metodo doPost invia a richiesta al doGet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);

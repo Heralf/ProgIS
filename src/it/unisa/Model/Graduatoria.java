@@ -40,6 +40,7 @@ public class Graduatoria {
 	 * @param graduatoria
 	 * @throws SQLException
 	 */
+	//funzione utilizzata per caricare la graduatoria
 	public synchronized void caricaGraduatoria (GraduatoriaBean graduatoria) throws SQLException{
 		PreparedStatement preparedStatement = null;
 		String inserisciSQL = "INSERT INTO graduatoria (nomegrad, tipograd, pesograd, graduatoria) values (?,?,?,?)";
@@ -60,6 +61,7 @@ public class Graduatoria {
 	 * @return boolean
 	 * @throws SQLException
 	 */
+	//fuinzione utilizzata per controllare se e' gia caricata la graduatoria
 	public synchronized boolean controlloGraduatoria () throws SQLException{
 		PreparedStatement preparedStatement = null;
 		Boolean graduatoria=false;
@@ -80,6 +82,7 @@ public class Graduatoria {
 	 * 
 	 * @throws SQLException
 	 */
+	//funzione per eliminare la graduatoria
 	public synchronized void eliminaGraduatoria () throws SQLException{
 		PreparedStatement preparedStatement = null;
 		String aggiornaSQL = "DELETE FROM "+ Graduatoria.TABLE_NAME + " WHERE ID = 1";

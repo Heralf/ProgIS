@@ -39,7 +39,7 @@ public class Account{
 	 * @return AccountBean
 	 * @throws SQLException
 	 */
-	//funzione che cerca l'account tramnite email, utilizzata per entrare sul sito web
+	//funzione che cerca l'account tramnite email
 	public synchronized AccountBean doSearchByEmail(String Email) throws SQLException{
 		PreparedStatement preparedStatement = null;
 		AccountBean account = new AccountBean();
@@ -77,6 +77,7 @@ public class Account{
 	 * @return AccountBean
 	 * @throws SQLException
 	 */
+	//funzione che verca l'account tramite l'id
 	public synchronized AccountBean doSearchByID(int ID) throws SQLException{
 		PreparedStatement preparedStatement = null;
 		AccountBean account = new AccountBean();

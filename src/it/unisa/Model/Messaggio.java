@@ -40,6 +40,7 @@ public class Messaggio {
 	 * @param messaggio
 	 * @throws SQLException
 	 */
+	//crea un messaggio per un determinato utente
 	public synchronized void creaMessaggio (MessaggioBean messaggio) throws SQLException{
 		PreparedStatement preparedStatement = null;
 		String inserisciSQL = "INSERT INTO " + Messaggio.TABLE_NAME + " (IDPROPRIETARIO, TITOLO, MESSAGGIO, VISTO) VALUES (?,?,?,?)";
@@ -61,6 +62,7 @@ public class Messaggio {
 	 * @return Collection<MessaggioBean>
 	 * @throws SQLException
 	 */
+	//prende una lista di messaggi di un determinato utente
 	public synchronized Collection<MessaggioBean> prendiMessaggi (int IDProprietario) throws SQLException{
 		PreparedStatement preparedStatement = null;
 		Collection<MessaggioBean> messaggi = new LinkedList<MessaggioBean>();
