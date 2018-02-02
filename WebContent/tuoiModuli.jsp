@@ -1,6 +1,3 @@
-<!--
-Pagina per lo studente; Lista completa dei moduli di accettazione si possono inviare per confermare la partecipazione
--->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page session="true" %>
 <%@ page contentType="text/html; charset=UTF-8" import="java.util.*, it.unisa.Model.*" %>
@@ -86,7 +83,9 @@ Pagina per lo studente; Lista completa dei moduli di accettazione si possono inv
 					Scegli questo Erasmus? 
 					<br> <br>
 					Clicca su &quot;compila&quot; e compila il modulo.
-					 <div id="popUp4"> <i class="fa fa-times-circle" style="font-size:33px; color:white; margin-right:2px; margin-left:3px; vertical-align:middle;"aria-hidden="true"></i> Devi ancora sostenere il colloquio </div>
+					<% if(disabilita){ %> 
+     				<div id="popUp4"> <i class="fa fa-times-circle" style="font-size:33px; color:white; margin-right:2px; margin-left:3px; vertical-align:middle;"aria-hidden="true"></i> Devi ancora sostenere il colloquio </div>
+     				<% } %>
 					 <% if(moduli.get(i).getInviaModulo()) { %>  
 						<button id="tastoModuli4" onclick="location.href='control?action=caricaModulo&idModulo=<%= moduli.get(i).getID() %>&page=/compilaModulo.jsp'" <% if(moduli.get(i).getInviaModulo()) { %> disabled=”disabled” <% } %> 
 					        <% if(disabilita){ %> disabled=”disabled” <% } %> > <!-- Se non è stato ancora fatto il colloquio questo tasto è disattivato -->
@@ -100,9 +99,7 @@ Pagina per lo studente; Lista completa dei moduli di accettazione si possono inv
 					        <i class="fa fa-pencil" style="font-size:24.5px; color:#FF6633; margin-right:3px; margin-left:4px; 
 					           margin-bottom:3px; vertical-align:middle;" aria-hidden="true"> </i> Compila
      				</button>	
-     				<% if(disabilita){ %> 
      				
-     				<% } %>
      				<% } %>
      			</div> 
      		<% } %>
