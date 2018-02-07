@@ -70,11 +70,11 @@ Sidebar utilizzata quando il login non è stato ancora effettuato
  			<i class="fa fa-font" style="font-size:30px; color:black; margin-top:-10px; vertical-align:middle;"> </i> 
  		</button>
 	</div>
-	
-	<script type="text/javascript">
 <!--
 Gestisce il Sistema Notifiche	
 -->
+	<script type="text/javascript">
+
 
 		function myFunction() {
    		 var x = document.getElementById("boxMessaggi");
