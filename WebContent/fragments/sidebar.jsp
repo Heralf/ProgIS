@@ -1,5 +1,5 @@
 <!--
-Sidebar utilizzata quando non si e' ancora collegati al sito di erasmus
+Sidebar utilizzata quando il login non è stato ancora effettuato
 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="ISO-8859-1"%>
 
@@ -73,8 +73,8 @@ Sidebar utilizzata quando non si e' ancora collegati al sito di erasmus
 	
 	<script type="text/javascript">
 <!--
-		
-//-->
+Gestisce il Sistema Notifiche	
+-->
 
 		function myFunction() {
    		 var x = document.getElementById("boxMessaggi");
