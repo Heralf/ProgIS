@@ -482,7 +482,7 @@ input[type="file"]{
 }
 
 
-#tastoDomandeErasmus3{  /* TASTO CANCELLA */
+#tastoDomandeErasmus3{  /* Tasto Cancella */
 	height:42px;
 	width:135px;
 	padding-left:4px;
@@ -501,7 +501,7 @@ input[type="file"]{
 	border-radius:2px;
 }
 
-#tastoDomandeErasmus3:hover{  /* TASTO CANCELLA */
+#tastoDomandeErasmus3:hover{  /* Tasto Cancella */
 	box-shadow:1px  1px 10px red;
 }
 
@@ -663,7 +663,7 @@ input[type="file"]{
 	color: white;
 }
 
-#tastoModuli1{  /* TASTO COMPILA */
+#tastoModuli1{  /* Tasto Compila */
 	height:42px;
 	width:135px;
 	padding-left:4px;
@@ -682,11 +682,11 @@ input[type="file"]{
 	border-radius:2px;
 }
 
-#tastoModuli1:hover{  /* TASTO COMPILA*/
+#tastoModuli1:hover{  /* Tasto Compila */
 	box-shadow:1px  1px 10px #FF6633;
 }
 
-#tastoModuli2{  /* TASTO INVIA */
+#tastoModuli2{  /* Tasto Invia */
 	height:42px;
 	width:135px;
 	padding-left:4px;
@@ -705,11 +705,11 @@ input[type="file"]{
 	border-radius:2px;
 }
 
-#tastoModuli2:hover{  /* TASTO INVIA */
+#tastoModuli2:hover{  /* Tasto Invia */
 	box-shadow:1px 1px 10px #2ecc71;
 }
 
-#tastoModuli4{  /* TASTO COMPILATO */
+#tastoModuli4{  /* Tasto Compilato */
 	height:42px;
 	width:135px;
 	padding-left:4px;
@@ -749,7 +749,7 @@ input[type="file"]{
 	font-size:105%;
 }
 
-#tastoGraduatorie{  /* TASTO SCARICA */
+#tastoGraduatorie{  /* Tasto Scarica */
 	height:42px;
 	width:135px;
 	padding-left:4px;
@@ -768,11 +768,11 @@ input[type="file"]{
 	border-radius:2px;
 }
 
-#tastoGraduatorie:hover{  /* TASTO CARICA */
+#tastoGraduatorie:hover{  /* Tasto Carica */
 	box-shadow:1px  1px 10px #3399FF;
 }
 
-#tastoCarica{  /* TASTO SCARICA */
+#tastoCarica{  /* Tasto Scarica */
 	height:42px;
 	width:135px;
 	padding-left:4px;
@@ -791,11 +791,11 @@ input[type="file"]{
 	border-radius:2px;
 }
 
-#tastoCarica:hover{  /* TASTO CARICA */
+#tastoCarica:hover{  /* Tasto Carica */
 	box-shadow:1px  1px 10px #FF6633;
 }
 
-#tastoPubblica{  /* TASTO PUBBLICA */
+#tastoPubblica{  /* Tasto Pubblica */
 	height:42px;
 	width:135px;
 	padding-left:4px;
@@ -814,11 +814,11 @@ input[type="file"]{
 	border-radius:2px;
 }
 
-#tastoPubblica:hover{  /* TASTO PUBBLICA */
+#tastoPubblica:hover{  /* Tasto Pubblica */
 	box-shadow:1px  1px 10px #3399FF;
 }
 
-#tastoRespingi{		/* TASTO RESPINGI*/
+#tastoRespingi{	/* Tasto Respingi */
 	height:42px;
 	width:137px;
 	padding-left:4px;
@@ -838,11 +838,11 @@ input[type="file"]{
 	border-radius:2px;
 }
 
-#tastoRespingi:hover{  		/* TASTO RESPINGI*/
+#tastoRespingi:hover{  	/* Tasto Respingi */
 	box-shadow:1px  1px 10px red;
 }
 
-#tastoRespingi1{		/* TASTO ACCETTA */
+#tastoRespingi1{ /* Tasto Accetta */
 	height:42px;
 	width:137px;
 	padding-left:4px;
@@ -862,7 +862,7 @@ input[type="file"]{
 	border-radius:2px;
 }
 
-#tastoRespingi2{		/* TASTO ACCETTA */
+#tastoRespingi2{ /* Tasto Accetta */
 	height:42px;
 	width:137px;
 	padding-left:4px;
@@ -882,11 +882,11 @@ input[type="file"]{
 	border-radius:2px;
 }
 
-#tastoRespingi1:hover{  		/* TASTO ACCETTA */
+#tastoRespingi1:hover{  /* Tasto Accetta */
 	box-shadow:1px  1px 10px #2ecc71;;
 }
 
-#tastoRespingi2:hover{  		/* TASTO ACCETTA */
+#tastoRespingi2:hover{  /* Tasto Accetta */
 	box-shadow:1px  1px 10px #2ecc71;;
 }
 
@@ -905,7 +905,7 @@ a:hover {
 	color:#0066FF; 
 }
 
-@media screen and (max-width:1000px){ /* Tablet + grande */
+@media screen and (max-width:1000px){ /* Tablet */
 
 
 #rigaCentrale{
