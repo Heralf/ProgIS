@@ -1,5 +1,5 @@
 <!--
-Sidebar utilizzata quando si etra come Impiegato
+Sidebar utilizzata quando si effettua il login come Impiegato
 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page session="true" %>
@@ -106,9 +106,9 @@ Sidebar utilizzata quando si etra come Impiegato
  		</button> 
 	</div>
 	<script type="text/javascript">
-<!--
-		
-//-->
+
+		//Gestisce il sistema notifiche		
+	
 		function myFunction() {
    		 var x = document.getElementById("boxMessaggi");
    		 var y = document.getElementById("boxMessaggi1");
