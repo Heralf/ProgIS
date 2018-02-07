@@ -4,9 +4,11 @@ Pagina per lo studente; Compili il modulo Erasmus per partecipare ad una determi
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page session="true" %>
 <%@ page contentType="text/html; charset=UTF-8" import="java.util.*, it.unisa.Model.*" %>
-<%	ModuloBean modulo = null;
-	if(request.getAttribute("modulo")!=null)
+<%
+	ModuloBean modulo = null;
+	if(request.getAttribute("modulo")!=null){
 		modulo = (ModuloBean)request.getAttribute("modulo");
+	}
 	AccountBean account = (AccountBean)request.getAttribute("account");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

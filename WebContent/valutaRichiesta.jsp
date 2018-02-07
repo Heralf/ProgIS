@@ -4,9 +4,12 @@ Pagina per l'impiegato; Serve a valutare le domande di accettazione inviata dall
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page session="true" %>
 <%@ page contentType="text/html; charset=UTF-8" import="java.util.*, it.unisa.Model.*" %>
-<%	ModuloBean modulo = null;
-	if(request.getAttribute("modulo")!=null)
-		modulo = (ModuloBean)request.getAttribute("modulo"); %>
+<%	
+	ModuloBean modulo = null;
+	if(request.getAttribute("modulo")!=null){
+		modulo = (ModuloBean)request.getAttribute("modulo");
+	}
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>

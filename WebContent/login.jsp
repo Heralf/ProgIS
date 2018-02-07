@@ -4,10 +4,12 @@ Pagina di login, serve sia all'impiegato che sia all'utente di loggare sula piat
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page session="true" %>
 <%@ page contentType="text/html; charset=UTF-8" import="java.util.*" %>
-<%	Boolean errore=null;
+<%	
+	Boolean errore=null;
 	if(request.getAttribute("errore")!=null){
 		errore=(boolean)request.getAttribute("errore");
-	} %>
+	} 
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>

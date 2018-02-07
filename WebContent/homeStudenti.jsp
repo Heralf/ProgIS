@@ -4,12 +4,14 @@ Pagina per lo studente; Home page per reindirizzarsi nelle varie sezioni per com
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page session="true" %>
 <%@ page contentType="text/html; charset=UTF-8" import="java.util.*" %>
-<%	int id=0;
+<%	
+	int id=0;
 	Boolean admin=false;
 	if(request.getSession().getAttribute("id")!=null){
 		id=(int)request.getSession().getAttribute("id");
 		admin=(boolean)request.getSession().getAttribute("admin");
-}	%>
+	}	
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>

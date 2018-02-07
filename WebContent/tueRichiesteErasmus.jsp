@@ -4,7 +4,8 @@ Pagina per lo studente; Lista di tutte le richieste create, si possono modificar
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page session="true" %>
 <%@ page contentType="text/html; charset=UTF-8" import="java.util.*, it.unisa.Model.*" %>
-<%  Collection <?> moduliColl = null;
+<%  
+	Collection <?> moduliColl = null;
 	Iterator <?> moduliIt = null;
 	ArrayList <ModuloBean> moduli = null;
 	Boolean inviato = false;
@@ -23,7 +24,8 @@ Pagina per lo studente; Lista di tutte le richieste create, si possono modificar
   	} 
   	if(request.getAttribute("contaModuli")!=null){
   		contaModuli = (Boolean)request.getAttribute("inviato");
-  	}%>
+  	}
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -51,7 +53,7 @@ Pagina per lo studente; Lista di tutte le richieste create, si possono modificar
 					</a>
 					. 
 				</div>
-				<% } else { %>
+			<% } else { %>
 				<div id="testoRichiesteErasmus">
 					Qui sono presenti le richieste Erasmus da te compilate e salvate, puoi modificarle e inviarle come preferisci.
 					<br> <br>
@@ -72,8 +74,8 @@ Pagina per lo studente; Lista di tutte le richieste create, si possono modificar
 					</font>
 				</div>
 				<% } %>
-				<% int i;
-				   for(i=0;i<moduli.size();i++){ %>		
+				<%	int i;
+				   	for(i=0;i<moduli.size();i++){ %>		
 				<div id="boxDomanda">			
 					Domanda compilata il: <%= moduli.get(i).getData() %> 
 					<br> <br>			
@@ -94,17 +96,19 @@ Pagina per lo studente; Lista di tutte le richieste create, si possono modificar
    	  					<i class="fa fa-paper-plane" style="font-size:23px; color:#2ecc71; margin-right:3px; margin-left:4px; 
    	  					   margin-bottom:1px; vertical-align:middle;" aria-hidden="true"> </i> Invia     	
    	  				</button>   
-   	  				<% } %>
-   	  				<% if(inviato) { %> 
+   	  				<% } 
+   	  				   if(inviato) { %> 
    	  				<button id="tastoDomandeErasmus4"> 
    	  					<i class="fa fa-paper-plane" style="font-size:23px; color:white; margin-right:3px; margin-left:4px; 
    	  					   margin-bottom:1px; vertical-align:middle;" aria-hidden="true"> </i> Inviato 
    	  				</button> 
 
    	  				<% } %>  
-   	  			<% if(moduli.get(i).getInviaModulo()) { %> 
-   	  			<div id="popUp"> <i class="fa fa-check-circle" style="font-size:32px; color:white; margin-right:4px; margin-left:4px; vertical-align:middle;"aria-hidden="true"></i> Domanda inviata correttamente</div>
-   		  		<% } %>
+   	  				<% if(moduli.get(i).getInviaModulo()) { %> 
+   	  			<div id="popUp">
+   	  				<i class="fa fa-check-circle" style="font-size:32px; color:white; margin-right:4px; margin-left:4px;
+   	  					vertical-align:middle;"aria-hidden="true"></i> Domanda inviata correttamente</div>
+   		  			<% } %>
    		  		</div>    
    		  		<% } %> 	
 			</div>
@@ -112,12 +116,8 @@ Pagina per lo studente; Lista di tutte le richieste create, si possono modificar
 		</div>
 	</body>
 	<script type="text/javascript">
-<!--
-		
-//-->
 		function myPopUp() {
    		 var x = document.getElementById("popUp");
-   		 
     		if (x.style.display === "none") {
         		x.style.display = "block";
         		y.style.display = "block";
@@ -126,6 +126,5 @@ Pagina per lo studente; Lista di tutte le richieste create, si possono modificar
         		y.style.display = "none";
     		}	
 		} 
-		
 	</script>
 </html>

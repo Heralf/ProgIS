@@ -4,7 +4,8 @@ Pagina per l'impiegato; Pagina che comprende una lista di tutti i moduli che han
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page session="true" %>
 <%@ page contentType="text/html; charset=UTF-8" import="java.util.*, it.unisa.Model.*" %>
-<%  Collection <?> moduliColl = null;
+<%
+	Collection <?> moduliColl = null;
 	Iterator <?> moduliIt = null;
 	ArrayList <ModuloBean> moduli = null;
 	int i;
@@ -16,7 +17,8 @@ Pagina per l'impiegato; Pagina che comprende una lista di tutti i moduli che han
 				moduli = new ArrayList <ModuloBean>();
 			moduli.add((ModuloBean)moduliIt.next());
 		}	
-  	} %>
+  	}
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -33,19 +35,19 @@ Pagina per l'impiegato; Pagina che comprende una lista di tutti i moduli che han
 				Valuta i moduli di accettazione
 			</div>
 			<div id="contenuto">
-				<% if(moduli==null){%>
+				<%	if(moduli==null){%>
 				<i id ="iconaTriste" class="fa fa-frown-o"> </i>	
 				<div id="testoTriste"> 
 					Non ci sono moduli di accettazione da valutare.
 					<br> <br> 
 				</div>
-				<% }else{ %>
+				<%	}else{ %>
 				<div id="testoRichiesteErasmus">
 					Qui sono presenti i moduli di accettazione compilati dagli studenti ed in attesa di essere valutate.
 					<br> <br>
 					Clicca sul pulsante &quot;Valuta&quot; per visualizzare in dettaglio il modulo di tuo interesse. 
 				</div>
-				<% for(i=0;i<moduli.size();i++){ %>
+					<%	for(i=0;i<moduli.size();i++){ %>
 				<div id="boxDomanda">
 					Mittente: <%= moduli.get(i).getAccount().getNome() %> <%= moduli.get(i).getAccount().getCognome() %>
 					<br> <br>
@@ -59,8 +61,8 @@ Pagina per l'impiegato; Pagina che comprende una lista di tutti i moduli che han
      					</button>
      				</a>
     			</div>
-			<% }
-			} %>
+					<% 	}
+					} %>
 			</div>	
 		</div>
 	</body>

@@ -1,7 +1,11 @@
+<!--
+-Pagina per lo studente; Lista completa dei moduli di accettazione si possono inviare per confermare la partecipazione
+--->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page session="true" %>
 <%@ page contentType="text/html; charset=UTF-8" import="java.util.*, it.unisa.Model.*" %>
-<%	Collection <?> moduliColl = null;
+<%	
+	Collection <?> moduliColl = null;
 	Iterator <?> moduliIt = null;
 	ArrayList <ModuloBean> moduli = null;
 	int i=0;
@@ -54,7 +58,8 @@
 					Compilando e inviando un modulo di accettazione, entrerai in graduatoria. 
 					(Ricorda: puoi inviare un solo modulo di accettazione, ovvero, puoi far parte della graduatoria per un solo Erasmus.)
 				</div>
-				<% for(i=0;i<moduli.size();i++){
+				<%
+					for(i=0;i<moduli.size();i++){
 						day2=Integer.parseInt(moduli.get(i).getData().substring(0, 2));
 						month2=Integer.parseInt(moduli.get(i).getData().substring(3, 5));
 						year2=Integer.parseInt(moduli.get(i).getData().substring(6));
@@ -71,39 +76,46 @@
 							}
 						} %>
 				<div id="boxDomanda">
-					<% if(!moduli.get(i).getInviaModulo()){ %>
+					<%	if(!moduli.get(i).getInviaModulo()){ %>
 					Compilare Modulo dal: <%= moduli.get(i).getData() %> 
 					<br> <br>
-					<% }else{ %>
+					<%	}else{ %>
 					Modulo compilato il: <%= moduli.get(i).getData() %> 
 					<br> <br>
-					<% } %>
+					<%	} %>
 					Destinazione: <%= moduli.get(i).getDestinazione1() %> 
 					<br> <br>
 					Scegli questo Erasmus? 
 					<br> <br>
 					Clicca su &quot;compila&quot; e compila il modulo.
-					<% if(disabilita){ %> 
-     				<div id="popUp4"> <i class="fa fa-times-circle" style="font-size:33px; color:white; margin-right:2px; margin-left:3px; vertical-align:middle;"aria-hidden="true"></i> Devi ancora sostenere il colloquio </div>
-     				<% } %>
-					 <% if(moduli.get(i).getInviaModulo()) { %>  
-						<button id="tastoModuli4" onclick="location.href='control?action=caricaModulo&idModulo=<%= moduli.get(i).getID() %>&page=/compilaModulo.jsp'" <% if(moduli.get(i).getInviaModulo()) { %> disabled=”disabled” <% } %> 
-					        <% if(disabilita){ %> disabled=”disabled” <% } %> > <!-- Se non è stato ancora fatto il colloquio questo tasto è disattivato -->
-					        <i class="fa fa-pencil" style="font-size:24.5px; color:white; margin-right:3px; margin-left:4px; 
-					           margin-bottom:3px; vertical-align:middle;" aria-hidden="true"> </i> Compilato
-     					</button>	
-					<% } %> 
-					<% if(!moduli.get(i).getInviaModulo()) { %>
-					<button id="tastoModuli1" onclick="location.href='control?action=caricaModulo&idModulo=<%= moduli.get(i).getID() %>&page=/compilaModulo.jsp'" <% if(moduli.get(i).getInviaModulo()) { %> disabled=”disabled” <% } %> 
-					        <% if(disabilita){ %> disabled=”disabled” <% } %> > <!-- Se non è stato ancora fatto il colloquio questo tasto è disattivato -->
-					        <i class="fa fa-pencil" style="font-size:24.5px; color:#FF6633; margin-right:3px; margin-left:4px; 
-					           margin-bottom:3px; vertical-align:middle;" aria-hidden="true"> </i> Compila
+					<%	if(disabilita){ %> 
+     				<div id="popUp4">
+     					<i class="fa fa-times-circle" style="font-size:33px; color:white; margin-right:2px;
+     						margin-left:3px; vertical-align:middle;"aria-hidden="true">
+     					</i> 
+     					Devi ancora sostenere il colloquio
+     				</div>
+     				<%	} 
+						if(moduli.get(i).getInviaModulo()) { %>  
+					<button id="tastoModuli4" onclick="location.href='control?action=caricaModulo&idModulo=<%= moduli.get(i).getID() %>&page=/compilaModulo.jsp'"
+						<% if(moduli.get(i).getInviaModulo()) { %> disabled=”disabled” <% } %> 
+						<%	if(disabilita){ %> disabled=”disabled” <% } %> >
+						<i class="fa fa-pencil" style="font-size:24.5px; color:white; margin-right:3px; margin-left:4px; 
+					    	margin-bottom:3px; vertical-align:middle;" aria-hidden="true"> </i> Compilato
      				</button>	
-     				
-     				<% } %>
+					<%	} %> 
+					<%	if(!moduli.get(i).getInviaModulo()) { %>
+					<button id="tastoModuli1" onclick="location.href='control?action=caricaModulo&idModulo=<%= moduli.get(i).getID() %>&page=/compilaModulo.jsp'"
+						<% if(moduli.get(i).getInviaModulo()) { %> disabled=”disabled” <% } %> 
+					 	<%	if(disabilita){ %> disabled=”disabled” <% } %> >
+						<i class="fa fa-pencil" style="font-size:24.5px; color:#FF6633; margin-right:3px; margin-left:4px; 
+					    	margin-bottom:3px; vertical-align:middle;" aria-hidden="true"> </i> Compila
+     				</button>	
+     				<%	} %>
      			</div> 
-     		<% } %>
+     			<%} %>
 			</div>
-		<% }%>
+			<%}%>
+		</div>
 	</body>
 </html>
