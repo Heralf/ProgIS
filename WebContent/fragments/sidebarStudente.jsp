@@ -1,5 +1,5 @@
 <!--
-Sidebar utilizzata quando sul sito si logga come studente
+Sidebar utilizzata quando si effettua il login come studente
 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page session="true" %>
@@ -123,9 +123,9 @@ Sidebar utilizzata quando sul sito si logga come studente
  		</button>  
 	</div>
 	<script type="text/javascript">
-<!--
+
 		
-//-->
+		//Gestisce il sistema notifiche
 
 		function myFunction() {
    		 var x = document.getElementById("boxMessaggi");
